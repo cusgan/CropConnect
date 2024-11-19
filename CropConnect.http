@@ -1,0 +1,6 @@
+@CropConnect_HostAddress = http://localhost:5037
+
+GET {{CropConnect_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
