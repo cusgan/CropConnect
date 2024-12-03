@@ -1,25 +1,14 @@
-﻿using System.ComponentModel.DataAnnotations;
-
-namespace CropConnect.Models
+﻿namespace CropConnect.DTO
 {
-    public class Guide
+    public class GuideDTO
     {
-        [Required]
         public int Id { get; set; }
-        [Required]
         public int AuthorId { get; set; }
-        [Required]
-        public Account? Author { get; set; }
-        [Required]
-        [StringLength(50)]
         public string Title { get; set; } = string.Empty;
-        [StringLength(100)]
         public string Content { get; set; } = string.Empty;
-        [Required]
         public DateTime DatePosted { get; set; }
-        [Required]
         public DateTime LastUpdated { get; set; }
-        [StringLength(100)]
         public string HeadingImage { get; set; } = string.Empty;
     }
+
 }

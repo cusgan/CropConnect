@@ -1,13 +1,22 @@
-﻿namespace CropConnect.Models
+﻿using System.ComponentModel.DataAnnotations;
+
+namespace CropConnect.Models
 {
     public class Rating
     {
-        public required int Id { get; set; }
-        public required int RatedId { get; set; }
-        public required Account Rated { get; set; }
-        public required int RaterId { get; set; }
-        public required Account Rater { get; set; }
-        public required float Value { get; set; } = 1.0f;
+        [Required]
+        public int Id { get; set; }
+        [Required]
+        public int RatedId { get; set; }
+        [Required]
+        public Account? Rated { get; set; }
+        [Required]
+        public int RaterId { get; set; }
+        [Required]
+        public Account? Rater { get; set; }
+        [Required]
+        public float Value { get; set; } = 1.0f;
+        [StringLength(100)]
         public string Content { get; set; } = string.Empty;
     }
 }

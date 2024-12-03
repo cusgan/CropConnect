@@ -1,15 +1,28 @@
-﻿namespace CropConnect.Models
+﻿using System.ComponentModel.DataAnnotations;
+
+namespace CropConnect.Models
 {
     public class Farm
     {
-        public required int Id { get; set; }
-        public required int OwnerAccountId { get; set; }
-        public required Account OwnerAccount { get; set; }
-        public required string FarmName { get; set; } = string.Empty;
-        public required string Location { get; set; } = string.Empty;
-        public required FarmType FarmType { get; set; }
-        public required FarmSize FarmSize { get; set; }
-        public required string ContactInfo { get; set; } = string.Empty;
+        [Required]
+        public int Id { get; set; }
+        [Required]
+        public int OwnerAccountId { get; set; }
+        [Required]
+        public Account? OwnerAccount { get; set; }
+        [Required]
+        [StringLength(50)]
+        public string FarmName { get; set; } = string.Empty;
+        [Required]
+        [StringLength(100)]
+        public string Location { get; set; } = string.Empty;
+        [Required]
+        public FarmType FarmType { get; set; }
+        [Required]
+        public FarmSize FarmSize { get; set; }
+        [Required]
+        [StringLength(50)]
+        public string ContactInfo { get; set; } = string.Empty;
     }
 
     // Enum for Farm Type

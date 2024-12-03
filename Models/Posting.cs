@@ -1,17 +1,31 @@
-﻿namespace CropConnect.Models
+﻿using System.ComponentModel.DataAnnotations;
+
+namespace CropConnect.Models
 {
     public class Posting
     {
-        public required int Id { get; set; }
-        public required int PosterId { get; set; }
-        public required Account Poster { get; set; }
+        [Required]
+        public int Id { get; set; }
+        [Required]
+        public int PosterId { get; set; }
+        [Required]
+        public Account? Poster { get; set; }
+        [StringLength(100)]
         public string ProductImage { get; set; } = string.Empty;
-        public required string ProductName { get; set; } = string.Empty;
+        [Required]
+        [StringLength(50)]
+        public string ProductName { get; set; } = string.Empty;
+        [StringLength(100)]
         public string ProductDescription { get; set; } = string.Empty;
-        public required ProductType ProductType { get; set; }
-        public required UnitType UnitType { get; set; }
-        public required float Price { get; set; }
-        public required int Stock { get; set; }
+        [Required]
+        public ProductType ProductType { get; set; }
+        [Required]
+        public UnitType UnitType { get; set; }
+        [Required]
+        public float Price { get; set; }
+        [Required]
+        public int Stock { get; set; }
+        [StringLength(100)]
         public string AdditionalInfo { get; set; } = string.Empty;
     }
     public enum ProductType

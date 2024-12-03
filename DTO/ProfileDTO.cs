@@ -1,23 +1,12 @@
-﻿using System.ComponentModel.DataAnnotations;
-
-namespace CropConnect.Models
+﻿namespace CropConnect.DTO
 {
-    public class Profile
+    public class ProfileDTO
     {
-        [Required]
         public int Id { get; set; }
-        [Required]
         public int AccountId { get; set; }
-        [Required]
-        public Account? Account { get; set; }
-        [Required]
-        [StringLength(50)]
         public string Name { get; set; } = string.Empty;
-        [StringLength(100)]
         public string Bio { get; set; } = string.Empty;
-        [StringLength(100)]
         public string WorkExperience { get; set; } = string.Empty;
         public DateOnly BirthDate { get; set; }
-
     }
 }

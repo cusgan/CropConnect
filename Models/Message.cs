@@ -1,13 +1,23 @@
-﻿namespace CropConnect.Models
+﻿using System.ComponentModel.DataAnnotations;
+
+namespace CropConnect.Models
 {
     public class Message
     {
-        public required int Id { get; set; }
-        public required int SenderId { get; set; }
-        public required Account Sender { get; set; }
-        public required int ReceiverId { get; set; }
-        public required Account Receiver { get; set; }
-        public required string Content { get; set; } = string.Empty;
-        public required DateTime TimeStamp { get; set; }
+        [Required]
+        public int Id { get; set; }
+        [Required]
+        public int SenderId { get; set; }
+        [Required]
+        public Account? Sender { get; set; }
+        [Required]
+        public int ReceiverId { get; set; }
+        [Required]
+        public Account? Receiver { get; set; }
+        [Required]
+        [StringLength(100)]
+        public string Content { get; set; } = string.Empty;
+        [Required]
+        public DateTime TimeStamp { get; set; }
     }
 }
