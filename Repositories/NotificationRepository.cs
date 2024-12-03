@@ -34,7 +34,9 @@ namespace CropConnect.Repositories
         }
         public List<Notification> GetNotificationsForAccountId(int id)
         {
-            return _appDbContext.Notification.Where(n => n.ReceiverId == id).ToList();
+            return _appDbContext.Notification
+                .Where(n => n.ReceiverId == id)
+                .ToList();
         }
     }
 }
