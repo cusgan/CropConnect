@@ -12,6 +12,7 @@ namespace CropConnect.Controllers
         private readonly IMessageService _messageService;
         public MessageController(IMessageService messageService) { _messageService = messageService; }
         [HttpGet]
+        [Route("chat/{id2}")]
         public IActionResult GetMessages(int id1, int id2)
         {
             var messages = _messageService.GetMessages(id1, id2);
@@ -31,6 +32,17 @@ namespace CropConnect.Controllers
 
             _messageService.SendMessage(messageDTO);
             return StatusCode(201, "Message sent successfully");
+        }
+        [HttpGet]
+        [Route("chat")]
+        public IActionResult GetConvos(int id)
+        {
+            var convos = _messageService.GetConvos(id);
+            if (convos == null || !convos.Any())
+            {
+                return NotFound($"No conversations found for User {id}.");
+            }
+            return Ok(convos);
         }
     }
 }

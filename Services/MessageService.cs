@@ -25,6 +25,17 @@ namespace CropConnect.Services
 
             _messageRepository.SendMessage(newMessage);
         }
+        public List<Message> GetConvos(int id)
+        {
+            var latestMessages = _messageRepository.GetConvos(id);
 
+            return latestMessages.Select(m => new Message
+            {
+                SenderId = m.SenderId,
+                ReceiverId = m.ReceiverId,
+                Content = m.Content,
+                TimeStamp = m.TimeStamp
+            }).ToList();
+        }
     }
 }

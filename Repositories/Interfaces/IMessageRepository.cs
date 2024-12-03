@@ -7,5 +7,6 @@ namespace CropConnect.Repositories.Interfaces
     {
         public List<Message> GetMessages(int id1, int id2);
         public void SendMessage(Message message);
+        public List<Message> GetConvos(int id);
     }
 }
