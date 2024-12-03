@@ -12,9 +12,11 @@ var builder = WebApplication.CreateBuilder(args);
 // Add services to the container.
 builder.Services.AddTransient<IAccountService, AccountService>();
 builder.Services.AddTransient<IGuideService, GuideService>();
+builder.Services.AddTransient<IMessageService, MessageService>();
 builder.Services.AddTransient<INotificationService, NotificationService>();
 builder.Services.AddScoped<IAccountRepository, AccountRepository>();
 builder.Services.AddScoped<IGuideRepository, GuideRepository>();
+builder.Services.AddScoped<IMessageRepository, MessageRepository>();
 builder.Services.AddScoped<INotificationRepository, NotificationRepository>();
 
 

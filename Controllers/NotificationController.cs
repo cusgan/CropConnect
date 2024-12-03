@@ -18,11 +18,15 @@ namespace CropConnect.Controllers
             return Ok(_notificationService.GetNotifications());
         }
         [HttpPost]
-
         public IActionResult SendNotification([FromForm] NotificationDTO notificationDTO)
         {
+            if (notificationDTO == null)
+            {
+                return BadRequest("Notification data is required.");
+            }
+
             _notificationService.SendNotification(notificationDTO);
-            return StatusCode(201, "Notification created successfully");
+            return StatusCode(201, "Message sent successfully");
         }
         [HttpDelete]
         [Route("{id}")]
