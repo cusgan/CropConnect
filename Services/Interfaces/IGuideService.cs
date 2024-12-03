@@ -6,5 +6,8 @@ namespace CropConnect.Services.Interfaces
     {
         public List<GuideDTO> GetGuides();
         public GuideDTO? GetGuideById(int id);
+        public bool CreateGuide(int authorid, string title, string content, string heading);
+        public bool UpdateGuide(int guideid, string title, string content, string heading);
+        public void DeleteGuideById(int id);   
     }
 }
