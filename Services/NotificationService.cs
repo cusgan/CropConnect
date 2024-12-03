@@ -3,6 +3,7 @@ using CropConnect.Models;
 using CropConnect.Repositories;
 using CropConnect.Repositories.Interfaces;
 using CropConnect.Services.Interfaces;
+using Microsoft.Identity.Client;
 
 namespace CropConnect.Services
 {
@@ -20,13 +21,26 @@ namespace CropConnect.Services
             {
                 Id = notificationDTO.Id,
                 ReceiverId = notificationDTO.ReceiverId,
-                Receiver = null,
+                Receiver = _notificationRepository.GetReceiverById(notificationDTO.ReceiverId),
                 Content = notificationDTO.Content,
                 Picture = notificationDTO.Picture,
                 Destination = notificationDTO.Destination,
             };
 
             _notificationRepository.SendNotification(newNotification);
+        }
+        public bool DeleteNotification(int id)
+        {
+            var notification = _notificationRepository.GetNotificationById(id);
+            if (notification == null)
+                return false;
+
+            _notificationRepository.DeleteNotification(notification);
+            return true;
+        }
+        public List<Notification> GetNotificationsForAccountId(int id)
+        {
+            return _notificationRepository.GetNotificationsForAccountId(id);
         }
     }
 }

@@ -19,11 +19,32 @@ namespace CropConnect.Controllers
         }
         [HttpPost]
 
-        public IActionResult SendNotification(NotificationDTO notificationDTO)
+        public IActionResult SendNotification([FromForm] NotificationDTO notificationDTO)
         {
-            //return NotFound(notificationDTO.ReceiverId);
             _notificationService.SendNotification(notificationDTO);
             return StatusCode(201, "Notification created successfully");
+        }
+        [HttpDelete]
+        [Route("{id}")]
+        public IActionResult DeleteNotification(int id)
+        {
+            var success = _notificationService.DeleteNotification(id);
+            if (!success)
+            {
+                return NotFound($"Notification with ID {id} not found.");
+            }
+            return NoContent();
+        }
+        [HttpGet]
+        [Route("account/{id}")]
+        public IActionResult GetNotificationForAccountId(int id)
+        {
+            var notifications = _notificationService.GetNotificationsForAccountId(id);
+            if (notifications == null || !notifications.Any())
+            {
+                return NotFound($"No notifications found for Account ID {id}.");
+            }
+            return Ok(notifications);
         }
     }
 }

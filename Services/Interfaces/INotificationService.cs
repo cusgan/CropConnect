@@ -7,5 +7,7 @@ namespace CropConnect.Services.Interfaces
     {
         public List<Notification> GetNotifications();
         public void SendNotification(NotificationDTO notificationDTO);
+        public bool DeleteNotification(int id);
+        public List<Notification> GetNotificationsForAccountId(int id);
     }
 }
