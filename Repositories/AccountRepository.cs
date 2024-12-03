@@ -1,5 +1,6 @@
 ﻿using CropConnect.Models;
 using CropConnect.Repositories.Interfaces;
+using System;
 
 namespace CropConnect.Repositories
 {
@@ -21,6 +22,24 @@ namespace CropConnect.Repositories
         {
             _appDbContext.Account.Add(acc);
             _appDbContext.SaveChanges();
+        }
+        public bool ChangePassword(int accountId, string newPasswordHash)
+        {
+            var acc = _appDbContext.Account.SingleOrDefault(x => x.Id == accountId);
+            if (acc == null) return false;
+
+            acc.PasswordHash = newPasswordHash;
+            _appDbContext.SaveChanges();
+            return true;
+        }
+        public void DeleteAccountById(int id)
+        {
+            Account? acc = _appDbContext.Account.SingleOrDefault(x => x.Id == id);
+            if (acc != null)
+            {
+                _appDbContext.Account.Remove(acc);
+                _appDbContext.SaveChanges();
+            }
         }
     }
 }

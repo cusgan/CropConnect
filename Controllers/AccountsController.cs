@@ -1,6 +1,7 @@
 ﻿using CropConnect.Models;
 using CropConnect.Services.Interfaces;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.IdentityModel.Tokens;
 
 
 namespace CropConnect.Controllers
@@ -37,7 +38,26 @@ namespace CropConnect.Controllers
                 return NotFound($"Account with that Email already exists");
             return Ok("Successfully Registered");
         }
-
+        [HttpPut]
+        [Route("api/accounts/update")]
+        public IActionResult ChangePassword([FromForm] int accountId, [FromForm] string oldPassword, [FromForm] string newPassword)
+        {
+            if (string.IsNullOrEmpty(oldPassword) || string.IsNullOrEmpty(newPassword))
+            {
+                return BadRequest("Missing or incomplete arguments");
+            }
+            bool success = _accountService.ChangePassword(accountId, oldPassword, newPassword);
+            if (!success)
+                return NotFound($"Could be able to change the password");
+            return Ok("Successfully Update Password");
+        }
+        [HttpDelete]
+        [Route("api/accounts/delete")]
+        public IActionResult DeleteAccount([FromForm] string email, [FromForm] string password)
+        {
+            _accountService.DeleteAccount(email, password);
+            return Ok("Successfully Deleted Account.");
+        }
 
     }
 }

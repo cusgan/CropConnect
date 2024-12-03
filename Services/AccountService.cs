@@ -31,6 +31,27 @@ namespace CropConnect.Services
             _accountRepository.Register(acc);
             return true;
         }
+        public void DeleteAccount(string email, string password)
+        {
+            if (Login(email, password))
+            {
+                int accountId = _accountRepository.GetAccountByEmail(email)!.Id;
+                _accountRepository.DeleteAccountById(accountId);
+            }
+        }
+        public bool ChangePassword(int accountId, string oldPassword, string newPassword)
+        {
+            var acc = _accountRepository.GetAccountById(accountId);
+            if (
+                acc == null || 
+                !Equals(
+                    HashPassword(oldPassword),
+                    acc.PasswordHash
+                    )
+                ) 
+                return false;
+            return _accountRepository.ChangePassword(accountId, HashPassword(newPassword));
+        }
         private static string HashPassword(string password)
         {
             using (SHA256 sha256 = SHA256.Create())
