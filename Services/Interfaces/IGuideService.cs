@@ -1,10 +1,10 @@
-﻿using CropConnect.Models;
+﻿using CropConnect.DTO;
 
 namespace CropConnect.Services.Interfaces
 {
     public interface IGuideService
     {
-        public List<Guide> GetGuides();
-        public Guide GetGuideById(int id);
+        public List<GuideDTO> GetGuides();
+        public GuideDTO? GetGuideById(int id);
     }
 }

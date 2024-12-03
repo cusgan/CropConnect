@@ -5,6 +5,7 @@ namespace CropConnect.Models
     public class Notification
     {
         [Required]
+        [Key]
         public int Id { get; set; }
         [Required]
         public int ReceiverId { get; set; }

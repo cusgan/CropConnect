@@ -1,4 +1,5 @@
-﻿using CropConnect.Models;
+﻿using CropConnect.DTO;
+using CropConnect.Models;
 using CropConnect.Repositories.Interfaces;
 using CropConnect.Services.Interfaces;
 
@@ -8,13 +9,20 @@ namespace CropConnect.Services
     {
         private readonly IGuideRepository _guideRepository;
         public GuideService(IGuideRepository guideRepository) { _guideRepository = guideRepository; }
-        public List<Guide> GetGuides()
+        public List<GuideDTO> GetGuides()
         {
-            return _guideRepository.GetGuides();
+            List<GuideDTO> guidesDTO = new List<GuideDTO>();
+            List<Guide> guidesRaw = _guideRepository.GetGuides();
+            foreach (var guide in guidesRaw) 
+            {
+                guidesDTO.Add(new GuideDTO(guide));
+            }
+            return guidesDTO;
         }
-        public Guide GetGuideById(int id)
+        public GuideDTO? GetGuideById(int id)
         {
-            return _guideRepository.GetGuideById(id);
+            var guide = _guideRepository.GetGuideById(id);
+            return GuideDTO.Get(guide);
         }
     }
 }
