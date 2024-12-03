@@ -29,7 +29,6 @@ namespace CropConnect.Controllers
             return StatusCode(201, "Message sent successfully");
         }
         [HttpDelete]
-        [Route("{id}")]
         public IActionResult DeleteNotification(int id)
         {
             var success = _notificationService.DeleteNotification(id);
