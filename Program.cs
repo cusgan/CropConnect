@@ -11,7 +11,10 @@ var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddTransient<IGuideService, GuideService>();
+builder.Services.AddTransient<INotificationService, NotificationService>();
 builder.Services.AddScoped<IGuideRepository, GuideRepository>();
+builder.Services.AddScoped<INotificationRepository, NotificationRepository>();
+
 
 builder.Services.AddDbContext<AppDbContext>(
     db => db.UseMySQL(builder.Configuration.GetConnectionString("Default")), ServiceLifetime.Scoped
