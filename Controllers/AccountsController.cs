@@ -1,4 +1,5 @@
 ﻿using CropConnect.Models;
+using CropConnect.Services;
 using CropConnect.Services.Interfaces;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.IdentityModel.Tokens;
@@ -10,7 +11,8 @@ namespace CropConnect.Controllers
     public class AccountsController : ControllerBase
     {
         private readonly IAccountService _accountService;
-        public AccountsController(IAccountService accountService) { _accountService = accountService; }
+        private readonly IProfileService _profileService;
+        public AccountsController(IAccountService accountService, IProfileService profileService) { _accountService = accountService; _profileService = profileService; }
 
         [HttpPost]
         [Route("api/accounts/login")]
@@ -33,9 +35,10 @@ namespace CropConnect.Controllers
             {
                 return BadRequest("Both inputs are required.");
             }
-            bool success = _accountService.Register(email, password);
-            if (!success)
+            var acc = _accountService.Register(email, password);
+            if (acc == -1)
                 return NotFound($"Account with that Email already exists");
+            _profileService.CreateProfile(acc);
             return Ok("Successfully Registered");
         }
         [HttpPut]

@@ -16,6 +16,7 @@ builder.Services.AddTransient<IGuideService, GuideService>();
 builder.Services.AddTransient<IMessageService, MessageService>();
 builder.Services.AddTransient<INotificationService, NotificationService>();
 builder.Services.AddTransient<IPostingService, PostingService>();
+builder.Services.AddTransient<IProfileService, ProfileService>();
 builder.Services.AddTransient<IRatingService, RatingService>();
 builder.Services.AddScoped<IAccountRepository, AccountRepository>();
 builder.Services.AddScoped<IFarmRepository, FarmRepository>();
@@ -23,6 +24,7 @@ builder.Services.AddScoped<IGuideRepository, GuideRepository>();
 builder.Services.AddScoped<IMessageRepository, MessageRepository>();
 builder.Services.AddScoped<INotificationRepository, NotificationRepository>();
 builder.Services.AddScoped<IPostingRepository, PostingRepository>();
+builder.Services.AddScoped<IProfileRepository, ProfileRepository>();
 builder.Services.AddScoped<IRatingRepository, RatingRepository>();
 
 

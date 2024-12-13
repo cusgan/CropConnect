@@ -18,10 +18,10 @@ namespace CropConnect.Services
             return (Equals(HashPassword(password), storedHash));
         }
 
-        public bool Register(string email, string password)
+        public int Register(string email, string password)
         {
             var acc = _accountRepository.GetAccountByEmail(email);
-            if (acc != null) return false;
+            if (acc != null) return -1;
 
             acc = new Models.Account()
             {
@@ -29,7 +29,8 @@ namespace CropConnect.Services
                 PasswordHash = HashPassword(password)
             };
             _accountRepository.Register(acc);
-            return true;
+            var created_acc = _accountRepository.GetAccountByEmail(email);
+            return created_acc.Id;
         }
         public void DeleteAccount(string email, string password)
         {

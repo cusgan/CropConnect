@@ -17,7 +17,7 @@ namespace CropConnect.Models
         public string Bio { get; set; } = string.Empty;
         [StringLength(100)]
         public string WorkExperience { get; set; } = string.Empty;
-        public DateOnly BirthDate { get; set; }
+        public DateOnly? BirthDate { get; set; }
 
     }
 }
