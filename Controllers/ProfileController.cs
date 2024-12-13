@@ -30,5 +30,16 @@ namespace CropConnect.Controllers
                 return NotFound(ex.Message);
             }
         }
+        [HttpGet]
+        [Route("{id}")]
+        public IActionResult OpenProfile(int id)
+        {
+            var profile = _profileService.OpenProfile(id);
+
+            if (profile == null)
+                return NotFound(new { Message = "Profile not found." });
+
+            return Ok(profile);
+        }
     }
 }

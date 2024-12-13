@@ -36,6 +36,9 @@ namespace CropConnect.Services
 
             _profileRepository.UpdateProfile(profile);
         }
-
+        public Profile OpenProfile(int id)
+        {
+            return _profileRepository.GetProfileById(id);
+        }
     }
 }
