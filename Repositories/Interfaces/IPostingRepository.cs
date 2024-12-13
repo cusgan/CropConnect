@@ -10,5 +10,6 @@ namespace CropConnect.Repositories.Interfaces
         public Posting GetPostingById(int id);
         public void UpdatePosting(Posting posting);
         public void DeletePosting(Posting posting);
+        public void BuyProduct(Posting posting);
     }
 }

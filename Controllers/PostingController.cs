@@ -72,5 +72,16 @@ namespace CropConnect.Controllers
             }
             return NoContent();
         }
+        [HttpPut]
+        [Route("buy/{id}")]
+        public IActionResult BuyProduct(int id)
+        {
+            var success = _postingService.BuyProduct(id);
+            if (!success)
+            {
+                return NotFound($"Product with ID {id} is out of stock.");
+            }
+            return NoContent();
+        }
     }
 }

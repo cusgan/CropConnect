@@ -8,7 +8,6 @@ namespace CropConnect.Services
     public class PostingService: IPostingService
     {
         private readonly IPostingRepository _postingRepository;
-
         public PostingService(IPostingRepository postingRepository) { _postingRepository = postingRepository; }
         public void CreatePosting(PostingDTO postingDTO)
         {
@@ -64,6 +63,26 @@ namespace CropConnect.Services
                 return false;
 
             _postingRepository.DeletePosting(posting);
+            return true;
+        }
+        public bool BuyProduct(int id)
+        {
+            var posting = _postingRepository.GetPostingById(id);
+            if (posting == null)
+            {
+                throw new Exception($"Posting with ID {id} not found.");
+            }
+
+            if (posting.Stock > 0)
+            {
+                posting.Stock = posting.Stock - 1;
+            }
+            else
+            {
+                return false;
+            }
+
+            _postingRepository.BuyProduct(posting);
             return true;
         }
     }

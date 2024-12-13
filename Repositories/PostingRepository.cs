@@ -38,5 +38,10 @@ namespace CropConnect.Repositories
             _appDbContext.Posting.Remove(posting);
             _appDbContext.SaveChanges();
         }
+        public void BuyProduct(Posting posting)
+        {
+            _appDbContext.Posting.Update(posting);
+            _appDbContext.SaveChanges();
+        }
     }
 }
