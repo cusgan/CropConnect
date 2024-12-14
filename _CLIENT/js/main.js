@@ -1,4 +1,4 @@
-require
+
 $(function() {
     useapi("/api/guides","GET")
         .then(response => {

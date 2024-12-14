@@ -1,157 +1,82 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap" rel="stylesheet">
     <title>Create New Post | CropConnect</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-    <script src="js/main.js"/>
+    <script src="../webcomponents/common.js"></script>
 </head>
 <body class="m-4"> 
-    <div class="w-[390px] h-[844px] relative overflow-hidden bg-white">
-        <div class="w-10 h-10">
-          <div class="w-10 h-10 absolute left-[28.5px] top-[29.5px] rounded-[50px] bg-[#08b656]"></div>
-          <div class="w-5 h-1 absolute left-[51.64px] top-[35.5px] rounded-[11px] bg-white"></div>
-          <div class="w-5 h-1 absolute left-[54.47px] top-[61.64px] rounded-[11px] bg-white"></div>
-        </div>
-        <p class="absolute left-[114px] top-[41px] text-[27px] text-center text-[#08b656]">
+    <div class="w-[390px] h-[844px] relative overflow-hidden bg-white">               
+      <button class="w-10 h-10 absolute left-[28.5px] top-[29.5px] rounded-[50px] bg-[#08b656]">
+        <i class="fa-solid fa-chevron-left text-white"></i>
+      </button>
+        <p class="absolute left-[114px] top-[41px] text-[27px] font-bold text-center text-[#08b656]">
           Create Posting
         </p>
-        <div
-          class="w-[347px] h-[170px] absolute left-[21px] top-[89px] rounded-[10px] bg-[#d9d9d9]"
-        ></div>
-        <p class="w-[188px] absolute left-[101px] top-[188px] text-base text-center text-[#8f8e8e]">
-          Upload Cover Image
+        <button
+          class="w-[347px] h-[170px] absolute left-[21px] top-[89px] rounded-[10px] bg-[#d9d9d9] text-[#8f8e8e]"
+        ><i class="fa-solid fa-arrow-up-from-bracket"></i><br>Upload Cover Image</button>
+        
+        <p class="w-[264px] absolute left-[29px] top-[275px] text-base font-semibold text-left text-[#8f8e8e]">
+          Product Name
         </p>
-        <div
-          class="w-[347px] h-[42px] absolute left-[21px] top-[305px] rounded-[5px] bg-white border border-[#cecece]"
-        ></div>
-        <div
-          class="w-[347px] h-[42px] absolute left-[21px] top-[385px] rounded-[5px] bg-white border border-[#cecece]"
-        ></div>
-        <p class="w-[264px] absolute left-[29px] top-[281px] text-base text-left text-[#8f8e8e]">
-          PRODUCT NAME
+        <input type="text" placeholder="Product Name..."
+          class="p-[6px] w-[347px] h-[42px] absolute left-[21px] top-[300px] rounded-[5px] bg-white border border-[#cecece] focus:bg-white focus:outline-none border-2 focus:border-green-500"
+        >
+        
+        <p class="w-[264px] absolute left-[30px] top-[350px] text-base font-semibold text-left text-[#8f8e8e]">
+          Product Description
         </p>
-        <p class="w-[264px] absolute left-[29px] top-[472px] text-base text-left text-[#8f8e8e]">
-          PRODUCT TYPE
+        <textarea placeholder="Product Description..." style="resize: none;" 
+          class="p-[6px] w-[347px] h-[63px] absolute left-[21px] top-[375px] rounded-[5px] bg-white border border-[#cecece] focus:bg-white focus:outline-none border-2 focus:border-green-500"
+        ></textarea>
+        
+        <p class="w-[264px] absolute left-[29px] top-[450px] text-base font-semibold text-left text-[#8f8e8e]">
+          Product Type
         </p>
-        <p class="w-[264px] absolute left-[30px] top-[363px] text-base text-left text-[#8f8e8e]">
-          PRODUCT DESCRIPTION
+        <select placeholder="Product Type..."
+                class="p-[6px] w-[347px] h-[37px] absolute left-[21px] top-[475px] rounded-[5px] bg-[#ececec] focus:bg-white focus:outline-none border-2 focus:border-green-500">
+            <option value="Crop">Crop (vegetable, grain, etc.)</option>
+            <option value="Dairy">Dairy (milk, cheese, yogurt, etc.)</option>
+            <option value="Meat">Meat and Poultry (pork, beef, chicken, etc.)</option>
+            <option value="Livestock">Livestock (pig, cow, chicken, etc.)</option>
+            <option value="Processed">Processed Products</option>
+            <option value="Misc">Miscellaneous</option>
+        </select>
+        
+        <p class="w-[264px] absolute left-[29px] top-[525px] text-base font-semibold text-left text-[#8f8e8e]">
+          Sold By (Unit)
         </p>
-        <div class="w-[264px] h-[37px] absolute left-[62px] top-[497px] rounded-[5px] bg-[#ececec]"></div>
-        <p class="absolute left-[169px] top-[510px] text-base text-center text-[#8f8e8e]">Produce</p>
-        <p class="w-[264px] absolute left-[29px] top-[556px] text-base text-left text-[#8f8e8e]">
-          SOLD BY
+        <select placeholder="Sold By..."
+                class="p-[6px] w-[347px] h-[37px] absolute left-[21px] top-[550px] rounded-[5px] bg-[#ececec] focus:bg-white focus:outline-none border-2 focus:border-green-500">
+            <option value="Piece">Piece</option>
+            <option value="Kilogram">Kilogram</option>
+            <option value="Liter">Liter</option>
+            <option value="Pack">Pack</option>
+            <option value="Other">Other</option>
+        </select>
+
+        <p class="w-[264px] absolute left-[29px] top-[600px] text-base font-semibold text-left text-[#8f8e8e]">
+          Price (₱)
         </p>
-        <div class="w-[264px] h-[37px] absolute left-[62px] top-[582px] rounded-[5px] bg-[#ececec]"></div>
-        <p class="absolute left-[178px] top-[595px] text-base text-center text-[#8f8e8e]">Piece</p>
-        <p class="w-[264px] absolute left-[29px] top-[641px] text-base text-left text-[#8f8e8e]">PRICE</p>
-        <div class="w-[264px] h-[37px] absolute left-[62px] top-[667px] rounded-[5px] bg-[#ececec]"></div>
-        <p class="absolute left-[168px] top-[680px] text-base text-center text-[#8f8e8e]">P143.00</p>
-        <p class="w-[264px] absolute left-[29px] top-[726px] text-base text-left text-[#8f8e8e]">STOCK</p>
-        <div class="w-[264px] h-[37px] absolute left-[62px] top-[752px] rounded-[5px] bg-[#ececec]"></div>
-        <p class="absolute left-[159px] top-[765px] text-base text-center text-[#8f8e8e]">500 pieces</p>
-        <svg
-          width="347"
-          height="3"
-          viewBox="0 0 347 3"
-          fill="none"
-          xmlns="http://www.w3.org/2000/svg"
-          class="absolute left-[21px] top-[449px]"
-          preserveAspectRatio="none"
-        >
-          <line x1="0.00146878" y1="0.500002" x2="347.001" y2="1.51934" stroke="#CECECE"></line>
-        </svg>
-        <div class="w-[241px] h-12">
-          <div
-            class="w-[241px] h-12 absolute left-[74.5px] top-[712.5px] rounded-[35px] bg-[#08b556]"
-          ></div>
-          <p
-            class="w-[228px] h-7 absolute left-[82px] top-[721px] text-[25px] font-semibold text-center text-[#f7f7f7]"
-          >
-            Create
-          </p>
-        </div>
-        <svg
-          width="390"
-          height="89"
-          viewBox="0 0 390 89"
-          fill="none"
-          xmlns="http://www.w3.org/2000/svg"
-          class="w-[390px] h-[89px] absolute left-0 top-[755px]"
-          preserveAspectRatio="none"
-        >
-          <rect y="22" width="390" height="67" fill="#08B656"></rect>
-          <path
-            d="M328.5 43C324.238 43 320.75 46.4875 320.75 50.75C320.75 54.78 318.735 58.4225 315.558 61.0575C313.969 62.375 313 64.235 313 66.25H344C344 64.235 343.07 62.375 341.443 61.0575C338.265 58.4225 336.25 54.78 336.25 50.75C336.25 46.4875 332.801 43 328.5 43ZM324.625 70.125C324.625 72.2563 326.369 74 328.5 74C330.631 74 332.375 72.2563 332.375 70.125H324.625Z"
-            fill="white"
-          ></path>
-          <path
-            d="M257.848 40C252.94 40 248.924 44.34 248.924 49.6875C248.924 55.035 252.94 59.375 257.848 59.375C262.757 59.375 266.773 55.035 266.773 49.6875C266.773 44.34 262.757 40 257.848 40ZM248.523 59.375C243.793 59.5688 240 62.94 240 67.125V71H275.697V67.125C275.697 62.94 271.949 59.5688 267.174 59.375C264.765 61.7388 261.463 63.25 257.848 63.25C254.234 63.25 250.932 61.7388 248.523 59.375Z"
-            fill="white"
-          ></path>
-          <path
-            d="M114 40V71H145V40H114ZM117.875 43.875H141.125V55.5L137.25 51.625L133.375 55.5L141.125 63.25V67.125H137.25L121.75 51.625L117.875 55.5V43.875Z"
-            fill="white"
-          ></path>
-          <path
-            d="M51 40L33 53.2857H37.5V71H46.5V62.1429H55.5V71H64.5V53.1529L69 53.2857L51 40Z"
-            fill="white"
-          ></path></svg
-        ><svg
-          width="32"
-          height="32"
-          viewBox="0 0 32 32"
-          fill="none"
-          xmlns="http://www.w3.org/2000/svg"
-          class="w-8 h-8 absolute left-[179px] top-[147px]"
-          preserveAspectRatio="none"
-        >
-          <path
-            d="M28 20V25.3333C28 26.0406 27.719 26.7189 27.219 27.219C26.7189 27.719 26.0406 28 25.3333 28H6.66667C5.95942 28 5.28115 27.719 4.78105 27.219C4.28095 26.7189 4 26.0406 4 25.3333V20M22.6667 10.6667L16 4M16 4L9.33333 10.6667M16 4V20"
-            stroke="#757575"
-            stroke-width="3"
-            stroke-linecap="round"
-            stroke-linejoin="round"
-          ></path></svg
-        ><svg
-          width="25"
-          height="20"
-          viewBox="0 0 25 20"
-          fill="none"
-          xmlns="http://www.w3.org/2000/svg"
-          class="w-[25px] h-5 absolute left-[294px] top-[507px]"
-          preserveAspectRatio="none"
-        >
-          <path
-            d="M6.25 7.5L12.5 12.5L18.75 7.5"
-            stroke="#B3B3B3"
-            stroke-width="2"
-            stroke-linecap="round"
-            stroke-linejoin="round"
-          ></path></svg
-        ><svg
-          width="25"
-          height="20"
-          viewBox="0 0 25 20"
-          fill="none"
-          xmlns="http://www.w3.org/2000/svg"
-          class="w-[25px] h-5 absolute left-[294px] top-[592px]"
-          preserveAspectRatio="none"
-        >
-          <path
-            d="M6.25 7.5L12.5 12.5L18.75 7.5"
-            stroke="#B3B3B3"
-            stroke-width="2"
-            stroke-linecap="round"
-            stroke-linejoin="round"
-          ></path>
-        </svg>
+        <input type="num" min="0" placeholder="Price..."
+        class="p-[6px] w-[347px] h-[37px] absolute left-[21px] top-[625px] rounded-[5px] bg-[#ececec] focus:bg-white focus:outline-none border-2 focus:border-green-500">
+
+        <p class="w-[264px] absolute left-[29px] top-[675px] text-base font-semibold text-left text-[#8f8e8e]">
+          Stock
+        </p>
+        <input type="num" min="0" placeholder="Stock..."
+        class="p-[6px] w-[347px] h-[37px] absolute left-[21px] top-[700px] rounded-[5px] bg-[#ececec] focus:bg-white focus:outline-none border-2 focus:border-green-500">
+        
+        <p class="w-[264px] absolute left-[29px] top-[750px] text-base font-semibold text-left text-[#8f8e8e]">
+          Additional Information
+        </p>
+        <input type="text" placeholder="Additional Information..."
+        class="p-[6px] w-[347px] h-[37px] absolute left-[21px] top-[775px] rounded-[5px] bg-[#ececec] focus:bg-white focus:outline-none border-2 focus:border-green-500">
+
+        <button
+        class="w-[241px] h-12 absolute left-[74.5px] top-[699.5px] rounded-[35px] bg-[#08b556] font-semibold text-center text-[#f7f7f7]"
+        >Create</button>
+        <nav-bar></nav-bar>
       </div>
       
 </body>
