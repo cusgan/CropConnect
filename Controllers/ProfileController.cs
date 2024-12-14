@@ -41,5 +41,18 @@ namespace CropConnect.Controllers
 
             return Ok(profile);
         }
+        [HttpPost]
+        [Route("{id}/upload-image")]
+        public IActionResult SetProfilePicture(int id, IFormFile imageFile)
+        {
+            if (imageFile == null || imageFile.Length == 0)
+            {
+                return BadRequest(new { Message = "Invalid image file." });
+            }
+
+            _profileService.SetProfilePicture(id, imageFile);
+
+            return Ok(new { Message = "Image uploaded successfully." });
+        }
     }
 }

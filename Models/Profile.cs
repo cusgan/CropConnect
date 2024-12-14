@@ -18,5 +18,6 @@ namespace CropConnect.Models
         [StringLength(100)]
         public string WorkExperience { get; set; } = string.Empty;
         public DateTime? BirthDate { get; set; }
+        public byte[]? ProfilePicture { get; set; }
     }
 }

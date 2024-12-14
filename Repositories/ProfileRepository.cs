@@ -1,5 +1,6 @@
 ﻿using CropConnect.Models;
 using CropConnect.Repositories.Interfaces;
+using Microsoft.EntityFrameworkCore;
 
 namespace CropConnect.Repositories
 {
@@ -21,6 +22,15 @@ namespace CropConnect.Repositories
         {
             _appDbContext.Profile.Update(profile);
             _appDbContext.SaveChanges();
+        }
+        public void SetProfilePicture(int id, byte[] imageData)
+        {
+            var profile = _appDbContext.Profile.FirstOrDefault(p => p.Id == id);
+            if (profile != null)
+            {
+                profile.ProfilePicture = imageData;
+                _appDbContext.SaveChanges();
+            }
         }
     }
 }

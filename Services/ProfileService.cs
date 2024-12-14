@@ -40,5 +40,17 @@ namespace CropConnect.Services
         {
             return _profileRepository.GetProfileById(id);
         }
+        public void SetProfilePicture(int id, IFormFile imageFile)
+        {
+            if (imageFile != null && imageFile.Length > 0)
+            {
+                using (var memoryStream = new MemoryStream())
+                {
+                    imageFile.CopyTo(memoryStream);
+                    var imageData = memoryStream.ToArray();
+                    _profileRepository.SetProfilePicture(id, imageData);
+                }
+            }
+        }
     }
 }

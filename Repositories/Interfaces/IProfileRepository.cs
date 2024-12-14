@@ -7,5 +7,6 @@ namespace CropConnect.Repositories.Interfaces
         public void CreateProfile(Profile profile);
         public Profile GetProfileById(int id);
         public void UpdateProfile(Profile profile);
+        public void SetProfilePicture(int id, byte[] imageData);
     }
 }
