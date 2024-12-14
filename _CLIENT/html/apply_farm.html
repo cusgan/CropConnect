@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap" rel="stylesheet">
+    <title>Apply as a Farm | CropConnect</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+</head>
+<body class="m-4"> 
+    <div class="w-[390px] h-[844px] relative overflow-hidden bg-white">        
+        <button class="w-10 h-10 absolute left-[28.5px] top-[29.5px] rounded-[50px] bg-[#08b656]">
+            <i class="fa-solid fa-chevron-left text-white"></i>
+        </button>
+        <p class="absolute left-[63px] top-[101px] text-3xl font-bold text-center text-[#08b656]">
+          Farm Application
+        </p>
+        <p
+          class="w-[237px] absolute left-[63px] top-[158px] text-base font-medium text-left text-[#8f8e8e]"
+        >
+          Have your farm verified to begin posting your produce.
+        </p>
+
+        <p class="w-[264px] absolute left-[63px] top-[225px] text-base font-semibold text-left text-[#8f8e8e]">
+          Farm Name
+        </p>
+        <input type="text" placeholder="Farm Name..."
+                class="p-[6px] w-[264px] h-[37px] absolute left-[62px] top-[250px] rounded-[5px] bg-[#ececec] focus:bg-white focus:outline-none border-2 focus:border-green-500">
+        <p class="w-[264px] absolute left-[63px] top-[300px] text-base font-semibold text-left text-[#8f8e8e]">
+          Location
+        </p> <!-- 25px between label and input, 50px between input and next label -->
+        <input type="text" placeholder="Location..."
+                class="p-[6px] w-[264px] h-[37px] absolute left-[62px] top-[325px] rounded-[5px] bg-[#ececec] focus:bg-white focus:outline-none border-2 focus:border-green-500">
+        <p class="w-[264px] absolute left-[63px] top-[375px] text-base font-semibold text-left text-[#8f8e8e]">
+          Farm Type
+        </p>
+
+        <select placeholder="Farm Type..."
+                class="p-[6px] w-[264px] h-[37px] absolute left-[62px] top-[400px] rounded-[5px] bg-[#ececec] focus:bg-white focus:outline-none border-2 focus:border-green-500">
+            <option value="Livestock">Livestock (meat, milk, etc.)</option>
+            <option value="Crops">Crops (vegetables, grains, etc.)</option>
+            <option value="Mixed">Mixed (livestock and crops)</option>
+            <option value="Aquaculture">Aquaculture (fish, shellfish, etc.)</option>
+            <option value="Other">Other</option>
+        </select>
+        <p class="w-[264px] absolute left-[63px] top-[450px] text-base font-semibold text-left text-[#8f8e8e]">
+          Farm Size
+        </p>
+        <select placeholder="Farm Size..." min="0"
+                class="p-[6px] w-[264px] h-[37px] absolute left-[62px] top-[475px] rounded-[5px] bg-[#ececec] focus:bg-white focus:outline-none border-2 focus:border-green-500">
+            <option value="Small">Small (Less than 3 hectares)</option>
+            <option value="Medium">Medium (3 to 10 hectares)</option>
+            <option value="Large">Large (More than 10 hectares)</option>
+        </select>
+        <p class="w-[264px] absolute left-[63px] top-[525px] text-base font-semibold text-left text-[#8f8e8e]">
+          Email Address
+        </p>
+        <input type="email" placeholder="Email Address..."
+                class="p-[6px] w-[264px] h-[37px] absolute left-[62px] top-[550px] rounded-[5px] bg-[#ececec] focus:bg-white focus:outline-none border-2 focus:border-green-500">
+        <p class="w-[264px] absolute left-[63px] top-[600px] text-base font-semibold text-left text-[#8f8e8e]">
+            Mobile Number
+        </p>
+        <input type="num" min="0" placeholder="Mobile Number..."
+        class="p-[6px] w-[264px] h-[37px] absolute left-[62px] top-[625px] rounded-[5px] bg-[#ececec] focus:bg-white focus:outline-none border-2 focus:border-green-500">
+
+        <button
+        class="w-[241px] h-12 absolute left-[74.5px] top-[699.5px] rounded-[35px] bg-[#08b556] font-semibold text-center text-[#f7f7f7]"
+        >Submit</button>
+
+        <!-- navbar -->
+        <div class="p-6 w-[390px] h-[67px] absolute left-0 top-[775px] bg-[#08B656] flex justify-evenly items-center space-x-10">
+            <a href="../index.html"><i class="fa-solid fa-house fa-2xl text-white"></i></a>
+            <a href=""><i class="fa-solid fa-wheat-awn fa-2xl text-white"></i></a>
+            <a href="profile.html"><i class="fa-solid fa-user fa-2xl text-white"></i></a>
+            <a href="notif.html"><i class="fa-solid fa-bell fa-2xl text-white"></i></a>
+        </div>
+
+        <!-- <svg
+          width="390"
+          height="89"
+          viewBox="0 0 390 89"
+          fill="none"
+          xmlns="http://www.w3.org/2000/svg"
+          class="w-[390px] h-[89px] absolute left-0 top-[755px]"
+          preserveAspectRatio="none"
+        >
+          <rect y="22" width="390" height="67" fill="#08B656"></rect>
+          <path
+            d="M328.5 43C324.238 43 320.75 46.4875 320.75 50.75C320.75 54.78 318.735 58.4225 315.558 61.0575C313.969 62.375 313 64.235 313 66.25H344C344 64.235 343.07 62.375 341.443 61.0575C338.265 58.4225 336.25 54.78 336.25 50.75C336.25 46.4875 332.801 43 328.5 43ZM324.625 70.125C324.625 72.2563 326.369 74 328.5 74C330.631 74 332.375 72.2563 332.375 70.125H324.625Z"
+            fill="white"
+          ></path>
+          <path
+            d="M257.848 40C252.94 40 248.924 44.34 248.924 49.6875C248.924 55.035 252.94 59.375 257.848 59.375C262.757 59.375 266.773 55.035 266.773 49.6875C266.773 44.34 262.757 40 257.848 40ZM248.523 59.375C243.793 59.5688 240 62.94 240 67.125V71H275.697V67.125C275.697 62.94 271.949 59.5688 267.174 59.375C264.765 61.7388 261.463 63.25 257.848 63.25C254.234 63.25 250.932 61.7388 248.523 59.375Z"
+            fill="white"
+          ></path>
+          <path
+            d="M114 40V71H145V40H114ZM117.875 43.875H141.125V55.5L137.25 51.625L133.375 55.5L141.125 63.25V67.125H137.25L121.75 51.625L117.875 55.5V43.875Z"
+            fill="white"
+          ></path>
+          <path
+            d="M51 40L33 53.2857H37.5V71H46.5V62.1429H55.5V71H64.5V53.1529L69 53.2857L51 40Z"
+            fill="white"
+          ></path>
+        </svg> -->
+      </div>
+      
+</body>
+</html>
