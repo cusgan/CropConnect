@@ -27,7 +27,15 @@ builder.Services.AddScoped<IPostingRepository, PostingRepository>();
 builder.Services.AddScoped<IProfileRepository, ProfileRepository>();
 builder.Services.AddScoped<IRatingRepository, RatingRepository>();
 
-
+builder.Services.AddCors(options =>
+{
+    options.AddPolicy("AllowAll", policy =>
+    {
+        policy.AllowAnyOrigin() // Allows all origins
+              .AllowAnyMethod() // Allows all HTTP methods
+              .AllowAnyHeader(); // Allows all headers
+    });
+});
 
 builder.Services.AddDbContext<AppDbContext>(
     db => db.UseMySQL(builder.Configuration.GetConnectionString("Default")), ServiceLifetime.Scoped
@@ -53,7 +61,7 @@ if (app.Environment.IsDevelopment())
 }
 
 app.UseHttpsRedirection();
-
+app.UseCors("AllowAll");
 app.UseAuthorization();
 
 app.MapControllers();

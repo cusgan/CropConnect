@@ -47,8 +47,15 @@ namespace CropConnect.Controllers
             _guideService.DeleteGuideById(id);
             return Ok($"Successfully deleted Guide with id: {id}");
         }
+        [HttpGet]
+        [Route("api/guides/query")]
+        public IActionResult QueryGuides(string query)
+        {
+            _guideService.QueryGuides(query);
+            return Ok(_guideService.QueryGuides(query));
+        }
 
-        
+
 
     }
 }

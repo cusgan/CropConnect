@@ -1,5 +1,7 @@
 ﻿using CropConnect.Models;
 using CropConnect.Repositories.Interfaces;
+using Microsoft.EntityFrameworkCore;
+using static Microsoft.Extensions.Logging.EventSource.LoggingEventSource;
 
 namespace CropConnect.Repositories
 {
@@ -51,6 +53,20 @@ namespace CropConnect.Repositories
             return guides;
         }
 
+        public List<Guide> QueryGuides(string query)
+        {
+            List<Guide> guides = _appDbContext.Guide
+                                 .FromSqlRaw($"SELECT * FROM Guide {query}")
+                                 .ToList();
+
+            foreach (Guide guide in guides)
+            {
+                var author = _appDbContext.Account.SingleOrDefault(x => x.Id == guide.AuthorId);
+                guide.Author = author;
+            }
+
+            return guides;
+        }
         public bool UpdateGuide(Guide guide)
         {
             var old = _appDbContext.Guide.SingleOrDefault(x => x.Id == guide.Id);

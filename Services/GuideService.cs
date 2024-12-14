@@ -19,6 +19,17 @@ namespace CropConnect.Services
             }
             return guidesDTO;
         }
+
+        public List<GuideDTO> QueryGuides(string query)
+        {
+            List<GuideDTO> guidesDTO = new List<GuideDTO>();
+            List<Guide> guidesRaw = _guideRepository.QueryGuides(query);
+            foreach (var guide in guidesRaw)
+            {
+                guidesDTO.Add(ToDTO(guide)!);
+            }
+            return guidesDTO;
+        }
         public GuideDTO? GetGuideById(int id)
         {
             var guide = _guideRepository.GetGuideById(id);
