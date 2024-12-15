@@ -45,7 +45,6 @@ namespace CropConnect.Services
             profile.Name = profileDTO.Name;
             profile.Bio = profileDTO.Bio;
             profile.WorkExperience = profileDTO.WorkExperience;
-            profile.BirthDate = profileDTO.BirthDate;
 
             _profileRepository.UpdateProfile(profile);
         }
