@@ -52,5 +52,9 @@ namespace CropConnect.Services
                 }
             }
         }
+        public Profile GetProfileByAccId(int id)
+        {
+            return _profileRepository.GetProfileByAccId(id);
+        }
     }
 }

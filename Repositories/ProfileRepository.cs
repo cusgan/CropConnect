@@ -32,5 +32,10 @@ namespace CropConnect.Repositories
                 _appDbContext.SaveChanges();
             }
         }
+        public Profile GetProfileByAccId(int id)
+        {
+            return _appDbContext.Profile
+                .FirstOrDefault(p => p.AccountId == id);
+        }
     }
 }

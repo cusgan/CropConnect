@@ -54,5 +54,16 @@ namespace CropConnect.Controllers
 
             return Ok(new { Message = "Image uploaded successfully." });
         }
+        [HttpGet]
+        [Route("{id}/profile")]
+        public IActionResult GetProfileByAccId(int id)
+        {
+            var profile = _profileService.GetProfileByAccId(id);
+
+            if (profile == null)
+                return NotFound(new { Message = "Profile not found." });
+
+            return Ok(profile);
+        }
     }
 }
