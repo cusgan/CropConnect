@@ -13,16 +13,16 @@ namespace CropConnect.Controllers
         public ProfileController(IProfileService profileService) { _profileService = profileService; }
         [HttpPut]
         [Route("edit/{id}")]
-        public IActionResult UpdateProfile(int id, [FromForm] ProfileDTO profileDTO)
+        public IActionResult UpdateProfile(int id, [FromForm] string Name, [FromForm] string Bio, [FromForm] string WorkExperience)
         {
-            if (profileDTO == null)
+            if (Name == null)
             {
-                return BadRequest("Profile data is required.");
+                return BadRequest("Name is required.");
             }
 
             try
             {
-                _profileService.UpdateProfile(id, profileDTO);
+                _profileService.UpdateProfile(id, Name, Bio, WorkExperience);
                 return Ok("Profile updated successfully.");
             }
             catch (Exception ex)

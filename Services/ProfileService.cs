@@ -35,16 +35,16 @@ namespace CropConnect.Services
             };
             _profileRepository.CreateProfile(newProfile);
         }
-        public void UpdateProfile(int id, ProfileDTO profileDTO)
+        public void UpdateProfile(int id, string Name, string Bio, string WorkExperience)
         {
             var profile = _profileRepository.GetProfileById(id);
             if (profile == null)
             {
                 throw new Exception($"Profile with ID {id} not found.");
             }
-            profile.Name = profileDTO.Name;
-            profile.Bio = profileDTO.Bio;
-            profile.WorkExperience = profileDTO.WorkExperience;
+            profile.Name = Name;
+            profile.Bio = Bio;
+            profile.WorkExperience = WorkExperience;
 
             _profileRepository.UpdateProfile(profile);
         }
