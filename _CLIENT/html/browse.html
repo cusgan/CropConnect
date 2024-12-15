@@ -1,37 +1,55 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <title>Create New Post | CropConnect</title>
+  <title>Browse | CropConnect</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
   <script src="../webcomponents/common.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+  <script src="../js/main.js"></script>
+  <script src="../js/postings.js" type="module"></script>
+  <style>
+  .hide-scrollbar {
+    -ms-overflow-style: none;  /* Internet Explorer 10+ */
+    scrollbar-width: none;  /* Firefox */
+  }
+  .container::-webkit-scrollbar { 
+    display: none;  /* Safari and Chrome */
+  }
+  </style>
 </head>
 <body class="m-4"> 
-    <div class="w-[390px] h-[844px] relative overflow-hidden bg-white">
+    <div class="w-[390px] h-[844px] relative overflow-scroll bg-white hide-scrollbar">
         <div class="w-[390px] h-[844px] absolute left-0 top-px overflow-hidden">
-          <div class="w-[289px] h-[49px]">
-            <div
-              class="w-[289px] h-[49px] absolute left-[52.5px] top-[47.5px] rounded bg-[#d9d9d9]"
-            ></div>
-            <svg
-              width="15"
-              height="15"
-              viewBox="0 0 15 15"
-              fill="none"
-              xmlns="http://www.w3.org/2000/svg"
-              class="w-[15px] h-[15px]"
-              preserveAspectRatio="xMidYMid meet"
-            >
-              <path
-                d="M6.50362 0.0185818C2.91734 0.0185818 0 2.93592 0 6.5222C0 10.1085 2.91734 13.0258 6.50362 13.0258C7.59995 13.0258 8.67769 12.7657 9.5882 12.264C9.66113 12.3517 9.74199 12.4326 9.82976 12.5055L11.6879 14.3637C11.8595 14.5568 12.0687 14.7127 12.3028 14.822C12.5368 14.9313 12.7907 14.9916 13.0489 14.9992C13.3071 15.0068 13.5641 14.9615 13.8041 14.8662C14.0442 14.7709 14.2622 14.6275 14.4449 14.4449C14.6275 14.2622 14.7709 14.0442 14.8662 13.8041C14.9615 13.5641 15.0068 13.3071 14.9992 13.0489C14.9916 12.7907 14.9313 12.5368 14.822 12.3028C14.7127 12.0687 14.5568 11.8595 14.3637 11.6879L12.5055 9.82976C12.415 9.73921 12.3154 9.65826 12.2082 9.5882C12.7099 8.67769 13.0258 7.61853 13.0258 6.50362C13.0258 2.91734 10.1085 0 6.5222 0L6.50362 0.0185818ZM6.50362 1.87676C9.08649 1.87676 11.1491 3.93934 11.1491 6.5222C11.1491 7.7486 10.7031 8.88209 9.92267 9.71827C9.90409 9.73685 9.8855 9.75543 9.86692 9.77401C9.77915 9.84695 9.69829 9.92781 9.62536 10.0156C8.80776 10.7588 7.69285 11.1862 6.48504 11.1862C3.90217 11.1862 1.8396 9.12365 1.8396 6.54078C1.8396 3.95792 3.90217 1.89534 6.48504 1.89534L6.50362 1.87676Z"
-                fill="black"
-              ></path>
-            </svg>
-            <p class="w-12 absolute left-[70px] top-16 text-[13px] text-left text-black">Search</p>
+
+        <form class="flex items-center max-w-sm mx-auto">   
+          <label for="simple-search" class="sr-only">Search</label>
+          <div class="relative w-full">
+              <input type="text" id="simple-search" class="p-[12px] w-[250px] h-[49px] absolute left-[40px] top-[47.5px] rounded bg-[#d9d9d9] focus:bg-white focus:outline-none border-2 focus:border-green-500" 
+              placeholder="Search..." />
           </div>
-          <p class="absolute left-[27px] top-[148px] text-[27px] text-left text-[#08b656]">Near You</p>
-          <p class="absolute left-[27px] top-[354px] text-[27px] text-left text-[#08b656]">
+          <button type="submit" class="p-2.5 ms-2 text-sm font-medium text-white bg-green-700 
+              rounded-lg border border-green-700 hover:bg-green-800 focus:ring-4 focus:outline-none 
+              focus:ring-green-300 dark:bg-green-600 dark:hover:bg-green-700 dark:focus:ring-green-800
+              absolute w-[49px] h-[49px] left-[290px] top-[47.5px] justify-evenly flex items-center">
+              <svg class="w-4 h-4" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 20">
+                  <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m19 19-4-4m0-7A7 7 0 1 1 1 8a7 7 0 0 1 14 0Z"/>
+              </svg>
+              <span class="sr-only">Search</span>
+          </button>
+        </form>
+
+          <p class="absolute left-[27px] top-[148px] text-[27px] text-left text-[#08b656] font-semibold">Near You</p>
+          <p class="absolute left-[27px] top-[354px] text-[27px] text-left text-[#08b656] font-semibold">
             Livestock Farms
           </p>
-          <p class="absolute left-[27px] top-[558px] text-[27px] text-left text-[#08b656]">
+          <p class="absolute left-[27px] top-[558px] text-[27px] text-left text-[#08b656] font-semibold">
             Seafood Top Picks
           </p>
           <p class="absolute left-[27px] top-[485px] text-base text-left text-[#4ff440]">1 Ton Piggo</p>
@@ -98,38 +116,8 @@
               class="w-[155px] h-[77px] absolute left-[-1px] top-[-1px] rounded-[5px] object-cover"
             />
           </div>
-          <svg
-            width="390"
-            height="88"
-            viewBox="0 0 390 88"
-            fill="none"
-            xmlns="http://www.w3.org/2000/svg"
-            class="w-[390px] h-[89px] absolute left-0 top-[755px]"
-            preserveAspectRatio="none"
-          >
-            <rect y="22" width="390" height="67" fill="#08B656"></rect>
-            <rect x="171" width="48" height="48" rx="24" fill="#304DB4"></rect>
-            <rect x="193" y="12" width="3" height="25" rx="1.5" fill="white"></rect>
-            <rect width="25" height="3" rx="1.5" transform="matrix(1 0 0 -1 182 26)" fill="white"></rect>
-            <path
-              d="M328.5 43C324.238 43 320.75 46.4875 320.75 50.75C320.75 54.78 318.735 58.4225 315.558 61.0575C313.969 62.375 313 64.235 313 66.25H344C344 64.235 343.07 62.375 341.443 61.0575C338.265 58.4225 336.25 54.78 336.25 50.75C336.25 46.4875 332.801 43 328.5 43ZM324.625 70.125C324.625 72.2563 326.369 74 328.5 74C330.631 74 332.375 72.2563 332.375 70.125H324.625Z"
-              fill="white"
-            ></path>
-            <path
-              d="M257.848 40C252.94 40 248.924 44.34 248.924 49.6875C248.924 55.035 252.94 59.375 257.848 59.375C262.757 59.375 266.773 55.035 266.773 49.6875C266.773 44.34 262.757 40 257.848 40ZM248.523 59.375C243.793 59.5688 240 62.94 240 67.125V71H275.697V67.125C275.697 62.94 271.949 59.5688 267.174 59.375C264.765 61.7388 261.463 63.25 257.848 63.25C254.234 63.25 250.932 61.7388 248.523 59.375Z"
-              fill="white"
-            ></path>
-            <path
-              d="M114 40V71H145V40H114ZM117.875 43.875H141.125V55.5L137.25 51.625L133.375 55.5L141.125 63.25V67.125H137.25L121.75 51.625L117.875 55.5V43.875Z"
-              fill="white"
-            ></path>
-            <path
-              d="M51 40L33 53.2857H37.5V71H46.5V62.1429H55.5V71H64.5V53.1529L69 53.2857L51 40Z"
-              fill="white"
-            ></path>
-          </svg>
         </div>
-        <nav-bar><nav-bar>
+        <nav-bar></nav-bar>
       </div>      
 </body>
 </html>

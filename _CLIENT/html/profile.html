@@ -7,21 +7,24 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap" rel="stylesheet">
     <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-    <script src="js/main.js"/>
+    <script src="../js/main.js"></script>
+    <script src="../js/profiles.js" type="module"></script>
+    <script src="../webcomponents/common.js" type="module"></script>
 </head>
 <body class="m-4"> 
     <div class="w-[390px] h-[844px] relative overflow-hidden bg-white">
         <div class="w-10 h-10">
             <div class="w-10 h-10">
-                <button class="w-10 h-10 absolute left-[28.5px] top-[29.5px] rounded-[50px] bg-[#08b656]">
-                  <i class="fa-solid fa-chevron-left text-white"></i>
+                <button id="btnBack" onclick="window.history.back();" class="w-10 h-10 absolute left-[28.5px] top-[29.5px] rounded-[50px] bg-[#08b656]">
+                  <i class="fa-solid fa-chevron-left text-white"></i></button>
               </div>
               <div class="w-10 h-10">
-                <button class="w-10 h-10 absolute right-[28.5px] top-[29.5px] rounded-[50px] bg-[#08b656]">
-                  <i class="fa-regular fa-comment text-white"></i>
+                <button onclick="window.location.href = 'profile_setup.html';" class="w-10 h-10 absolute right-[28.5px] top-[29.5px] rounded-[50px] bg-[#08b656]">
+                  <i class="fa-regular fa-comment text-white"></i></button>
               </div>
           <path
             d="M1.5 28.5V1.5H38.5V36.3787L31.0607 28.9393L30.6213 28.5H30H1.5Z"
@@ -33,11 +36,13 @@
           <circle cx="20" cy="14" r="2" fill="#4FF440"></circle>
           <circle cx="31" cy="14" r="2" fill="#4FF440"></circle></svg
         >
-        <p class="absolute left-[107px] top-[355px] text-[27px] text-center text-[#08b656]">
-          Farmer Delgado
+        <img id="profile_picture_back" class="w-[250px] absolute left-[75px] top-[109px] rounded-full" src="../media/prof-pic-default.png" alt=""/>
+        <img id="profile_picture" class="w-[250px] absolute left-[75px] top-[109px] rounded-full" src="" alt=" "/>
+        <p id="username" class=" absolute left-[75px] w-[250px] top-[355px] text-[27px] text-center text-[#08b656]">
+          USERNAME
         </p>
-        <p class="absolute left-[142px] top-[393px] text-base text-center text-[#8f8e8e]">
-          Beetroot Farmer
+        <p id="work_experience" class=" absolute left-[75px] w-[250px] top-[393px] text-base text-center text-[#8f8e8e]">
+          WEOK EXPERIENCE
         </p>
         <div class="w-[378px] h-[284px] absolute left-[5px] top-[559px] bg-[#ececec]"></div>
         <div class="w-[378px] h-[117px]">
@@ -47,8 +52,8 @@
           <p class="absolute left-[25px] top-[458px] text-base font-medium text-left text-[#4ff440]">
             Biography
           </p>
-          <p class="absolute left-[37px] top-[491px] text-base text-left text-[#8f8e8e]">
-            100% bisakol meat
+          <p id="biography" class=" absolute left-[30px] w-[250px] top-[491px] text-base text-left text-[#8f8e8e]">
+            BIOGRAPHY
           </p>
         </div>
         <p class="absolute left-[93px] top-[605px] text-base text-left text-[#9d9d9d]">
@@ -113,5 +118,6 @@
           ></path>
         </svg>
       </div>
+      <nav-bar-no-plus></nav-bar-no-plus>
 </body>
 </html>
