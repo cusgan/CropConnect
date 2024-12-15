@@ -46,6 +46,10 @@ namespace CropConnect.Services
         {
             return _postingRepository.GetPostingsById(id);
         }
+        public Posting GetPostingById(int id)
+        {
+            return _postingRepository.GetPostingById(id);
+        }
         public void UpdatePosting(int id, PostingDTO postingDTO)
         {
             var posting = _postingRepository.GetPostingById(id);

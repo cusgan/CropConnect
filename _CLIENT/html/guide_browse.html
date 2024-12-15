@@ -13,28 +13,28 @@
   <script src="../webcomponents/common.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
   <script src="../js/main.js"></script>
-  <script src="../js/postings.js" type="module"></script>
-  <script src="../webcomponents/posting.js"></script>
+  <script src="../js/guide_browse.js" type="module"></script>
+  <!-- <script src="../webcomponents/posting.js"></script> -->
   <link href="https://cdn.jsdelivr.net/npm/flowbite@2.5.2/dist/flowbite.min.css" rel="stylesheet" />
 
   <style>
-  .hide-scrollbar {
-    -ms-overflow-style: none;  /* Internet Explorer 10+ */
-    scrollbar-width: none;  /* Firefox */
-  }
-  .container::-webkit-scrollbar { 
-    display: none;  /* Safari and Chrome */
-  }
+    .hide-scrollbar {
+      -ms-overflow-style: none;  /* Internet Explorer 10+ */
+      scrollbar-width: none;  /* Firefox */
+    }
+    .container::-webkit-scrollbar { 
+      display: none;  /* Safari and Chrome */
+    }
   </style>
 </head>
 <body class="m-4"> 
-    <div class="w-[390px] h-[844px] relative overflow-scroll bg-white hide-scrollbar">
+    <div class="w-[390px] h-[777px] relative overflow-scroll bg-white hide-scrollbar">
         <div class="w-[390px] h-[844px] absolute left-0 top-px overflow-hidden">
 
         <form class="flex items-center max-w-sm mx-auto">   
           <label for="simple-search" class="sr-only">Search</label>
           <div class="relative w-full">
-              <input type="text" id="simple-search" class="p-[12px] w-[250px] h-[49px] absolute left-[40px] top-[47.5px] rounded bg-[#d9d9d9] focus:bg-white focus:outline-none border-2 focus:border-green-500" 
+              <input onclick="window.location.href='search.html'" type="text" id="simple-search" class="p-[12px] w-[250px] h-[49px] absolute left-[40px] top-[47.5px] rounded bg-[#d9d9d9] focus:bg-white focus:outline-none border-2 focus:border-green-500" 
               placeholder="Search..." />
           </div>
           <button type="submit" class="p-2.5 ms-2 text-sm font-medium text-white bg-green-700 
@@ -48,20 +48,27 @@
           </button>
         </form>
 
-        <div id="posting-container-1" class="absolute top-[210px] left-[25px] flex flex-row">hey</div>
-        <div id="posting-container-2" class="absolute top-[410px] left-[25px] flex flex-row"></div>
-        <div id="posting-container-3" class="absolute top-[610px] left-[25px] flex flex-row"></div>
+        <div id="posting-container-1" class="relative top-[210px] left-[25px] flex flex-row overflow-x-auto hide-scrollbar">hey</div>
+        <div id="posting-container-2" class="relative top-[290px] left-[25px] flex flex-row overflow-x-auto hide-scrollbar"></div>
+        <div id="posting-container-3" class="relative top-[375px] left-[25px] flex flex-row overflow-x-auto hide-scrollbar"></div>
 
-          <p class="absolute left-[27px] top-[148px] text-[27px] text-left text-[#08b656] font-semibold">Near You</p>
+          <p class="absolute left-[27px] top-[148px] text-[27px] text-left text-[#08b656] font-semibold">Latest Guides</p>
           <p class="absolute left-[27px] top-[354px] text-[27px] text-left text-[#08b656] font-semibold">
-            Livestock Farms
+            Most Helpful
           </p>
           <p class="absolute left-[27px] top-[558px] text-[27px] text-left text-[#08b656] font-semibold">
-            Seafood Top Picks
+            Farming Basics
           </p>
         </div>
-        <nav-bar></nav-bar>
+
+        
+        <!-- whitespace -->
+        <div class="w-[264px] h-[100px] absolute left-[29px] top-[825px]"></div>
+        
       </div>      
+      <div class="p-6 w-[390px] h-[67px] absolute left-[17px] top-[0px]">
+        <nav-bar></nav-bar>
+      </div>
       <script src="https://cdn.jsdelivr.net/npm/flowbite@2.5.2/dist/flowbite.min.js"></script>
 </body>
 </html>

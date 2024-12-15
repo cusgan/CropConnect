@@ -11,25 +11,50 @@ namespace CropConnect.Controllers
     {
         private readonly IProfileService _profileService;
         public ProfileController(IProfileService profileService) { _profileService = profileService; }
+        //[HttpPut]
+        //[Route("edit/{id}")]
+        //public IActionResult UpdateProfile(int id, [FromForm] string Name, [FromForm] string Bio, [FromForm] string WorkExperience)
+        //{
+        //    if (Name == null)
+        //    {
+        //        return BadRequest("Name is required.");
+        //    }
+        //    if (!ModelState.IsValid)
+        //    {
+        //        _profileService.UpdateProfile(id, Name, Bio, WorkExperience);
+        //        return Ok("Profile updated successfully.");
+        //    }
+        //    try
+        //    {
+        //        _profileService.UpdateProfile(id, Name, Bio, WorkExperience);
+        //        return Ok("Profile updated successfully.");
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        return NotFound(ex.Message);
+        //    }
+        //}
         [HttpPut]
         [Route("edit/{id}")]
         public IActionResult UpdateProfile(int id, [FromForm] string Name, [FromForm] string Bio, [FromForm] string WorkExperience)
         {
-            if (Name == null)
+            if (string.IsNullOrWhiteSpace(Name))
             {
                 return BadRequest("Name is required.");
             }
 
             try
             {
+                // Call the service to update the profile
                 _profileService.UpdateProfile(id, Name, Bio, WorkExperience);
                 return Ok("Profile updated successfully.");
             }
             catch (Exception ex)
             {
-                return NotFound(ex.Message);
+                return NotFound(ex.Message); // Catch any exception and return NotFound
             }
         }
+
         [HttpGet]
         [Route("{id}")]
         public IActionResult OpenProfile(int id)

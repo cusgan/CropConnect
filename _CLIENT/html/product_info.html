@@ -7,10 +7,12 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap" rel="stylesheet">
     <title>Product Information | CropConnect</title>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <script src="../js/main.js"></script>
+    <script src="../js/product.js"></script>
     <script src="../webcomponents/common.js"></script>
     <script src="../path/to/flowbite/dist/flowbite.min.js"></script> 
     <link href="https://cdn.jsdelivr.net/npm/flowbite@2.5.2/dist/flowbite.min.css" rel="stylesheet" />
@@ -26,19 +28,19 @@
 </head>
 <body>
 <div class="w-[410px] h-[736px] relative overflow-scroll hide-scrollbar">
-    <p class="absolute left-[18px] top-[255px] text-[40px] text-left text-[#08b656]">Ba-cow naman</p>
+    <p id="productName" class="absolute left-[18px] top-[255px] text-[40px] text-left text-[#08b656]">Ba-cow naman</p>
     <p class="absolute left-[18px] top-[465px] text-[27px] text-left text-[#08b656]">
       Product Details
     </p>
-    <p class="absolute left-[18px] top-[313px] text-xl text-left text-[#8f8e8e]">100% bisakol meat</p>
+    <p id="desc" class="absolute left-[18px] top-[313px] text-xl text-left text-[#8f8e8e]">100% bisakol meat</p>
     <div class="w-[354px] h-[103px]">
       <div
         class="w-[354px] h-[103px] absolute left-[17.5px] top-[354.5px] bg-[#f7f7f7] border border-[#cecece]"
       ></div>
-      <p class="absolute left-[120px] top-[395px] text-[13px] text-left text-[#8f8e8e]">
+      <p id="work" class="absolute left-[120px] top-[395px] text-[13px] text-left text-[#8f8e8e]">
         Anjo World, Minglanilla, Cebu
       </p>
-      <p class="absolute left-[120px] top-[375px] text-base text-left text-[#4ff440]">
+      <p id="email" class="absolute left-[120px] top-[375px] text-base text-left text-[#4ff440]">
         Farmer Delgado
       </p>
       <div class="flex items-center absolute left-[150px] top-[420px]">
@@ -74,20 +76,20 @@
         ></path>
       </svg>
     </div>
-    <input readonly placeholder="Product Type: Meat"
+    <input id="type" readonly placeholder="Product Type: Meat"
       class="w-[354px] h-7 absolute left-[17px] top-[506px] rounded-[5px] bg-white border border-[#cecece]"
     ></input>
-    <input readonly placeholder="Sold by: Kilograms"
+    <input id="kg" readonly placeholder="Sold by: Kilograms"
       class="w-[354px] h-7 absolute left-[17px] top-[552px] rounded-[5px] bg-white border border-[#cecece]"
     ></input>
-    <input readonly placeholder="Stock: 500 kgs remaining"
+    <input id="stock" readonly placeholder="Stock: 500 kgs remaining"
       class="w-[354px] h-7 absolute left-[17px] top-[644px] rounded-[5px] bg-white border border-[#cecece]"
     ></input>
-    <textarea readonly
+    <textarea readonly id="info"
       placeholder="Additional Info: "
       class="m w-[354px] h-[150px] absolute left-[17px] top-[690px] rounded-[5px] bg-white border border-[#cecece]"
     ></textarea>
-    <input readonly placeholder="Price: P1000/kg"
+    <input id="price" readonly placeholder="Price: P1000/kg"
       class="w-[354px] h-7 absolute left-[17px] top-[598px] rounded-[5px] bg-white border border-[#cecece]"
     ></input>
     <div class="w-[241px] h-12">
@@ -97,11 +99,11 @@
     </div>
     <nav-bar class="fixed left-[0px] top-[-59px]"></nav-bar>
     <div class="w-[460px] h-[249px] absolute left-0 top-0 overflow-hidden rounded-[5px]">
-      <img
+      <img id="coverimage"
         src="../media/cow.jpg"
         class="w-[396px] h-[271px] absolute left-[-7px] top-[-11px] object-cover"
       />
-      <button id="btnBack" class="w-10 h-10 absolute left-[28.5px] top-[29.5px] rounded-[50px] bg-[#08b656]">
+      <button id="btnBack" onclick="window.history.back();" class="w-10 h-10 absolute left-[28.5px] top-[29.5px] rounded-[50px] bg-[#08b656]">
         <i class="fa-solid fa-chevron-left text-white"></i>
       </button>
       <button class="w-10 h-10 absolute left-[320px] top-[29.5px] rounded-[50px] bg-[#08b656]">
@@ -115,13 +117,13 @@
         <div
           class="w-[390px] h-[250px] absolute left-[-0.5px] top-[-0.5px] rounded-[10px] bg-[#f7f7f7] border border-[#f7f7f7]"
         ></div>
-        <input
+        <input id="buyQuantity"
           class="w-[354px] h-7 absolute left-[13.5px] top-[60px] rounded-[5px] bg-white border border-[#cecece]"
         ></input>
         <p class="absolute left-[326px] top-[61px] text-[15px] text-left text-[#8f8e8e]">| kgs</p>
         <p class="absolute left-[18px] top-[17px] text-xl text-left text-[#08b656]">Order Quantity</p>
         <div class="w-[241px] h-12">
-          <button data-modal-target="confirm-modal" data-modal-hide="confirm-modal"
+          <button id="btnConfirm" data-modal-target="confirm-modal" data-modal-hide="confirm-modal"
             class="w-[241px] h-12 absolute left-[73.5px] top-[110px] rounded-[35px] bg-[#08b556] text-white"
           >Confirm</button>
         </div>

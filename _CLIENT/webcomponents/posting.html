@@ -1,8 +1,9 @@
 <template id="posting-template">
+  <a onclick="setCookie('currentViewId','{%ID%}'); window.location.href = 'product_info.html';" class="font-medium text-green-600 dark:text-green-500 hover:underline">
     <div class="w-[155px] h-[77px] overflow-hidden rounded-[5px]">
       <img
         src="{%IMAGE%}"
-        class="w-[155px] h-[155px] object-cover m-[-30px]"
+        class="w-[200px] h-[200px] object-cover my-[-75px]"
       />
     </div>
     <p class="text-base text-left text-[#4ff440]">

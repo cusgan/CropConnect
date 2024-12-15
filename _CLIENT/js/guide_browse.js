@@ -1,19 +1,19 @@
 import * as main from './main.js';
 var postingsList;
 $(function() {
-    apicall("/api/postings","GET",{})
+    apicall("/api/guides","GET",{})
     .then(response => {
         postingsList = response;
         console.log(response);
-        displayPostings();
+        displayPostingsD();
     }).catch(error=>{
         console.log(error);
         alert(error.message + "\n" + error.response.data);
     });
 });
 
-function displayPostings(){
-    fetch('../webcomponents/posting.html')
+function displayPostingsD(){
+    fetch('../webcomponents/guidepost.html')
     .then(response => response.text())
     .then(html => {
         // Create a temporary DOM to parse the HTML
@@ -33,13 +33,13 @@ function displayPostings(){
             res += 
             "<div class=\"block mr-[10px]\">" +
                 content.replaceAll(
-                    "{%TITLE%}",element.productName
+                    "{%TITLE%}",element.title
                 ).replaceAll(
-                    "{%SUBTITLE%}",element.additionalInfo
+                    "{%SUBTITLE%}",element.author.email
                 ).replaceAll(
                     "{%ID%}",element.id
                 ).replaceAll(
-                    "{%IMAGE%}","data:image/jpeg;base64,"+element.productImage,) + 
+                    "{%IMAGE%}","data:image/jpeg;base64,"+element.headingImage,) + 
             "</div>";
         });
         postingsContainer1.html(res);

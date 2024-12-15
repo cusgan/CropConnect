@@ -43,6 +43,17 @@ namespace CropConnect.Controllers
             }
             return Ok(postings);
         }
+        [HttpGet]
+        [Route("getone/{id}")]
+        public IActionResult GetPostingById(int id)
+        {
+            var postings = _postingService.GetPostingById(id);
+            if (postings == null)
+            {
+                return NotFound($"No postings found for Account ID {id}.");
+            }
+            return Ok(postings);
+        }
         [HttpPut]
         [Route("edit/{id}")]
         public IActionResult UpdatePosting(int id, [FromForm] PostingDTO postingDTO)

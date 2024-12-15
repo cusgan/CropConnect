@@ -14,27 +14,33 @@
 </head>
 <body class="m-4"> 
     <div class="w-[390px] h-[844px] relative overflow-hidden bg-white">            
-      <button id="btnBack" class="w-10 h-10 absolute left-[28.5px] top-[29.5px] rounded-[50px] bg-[#08b656]">
+      <button id="btnBack" onclick="window.history.back();" class="w-10 h-10 absolute left-[28.5px] top-[29.5px] rounded-[50px] bg-[#08b656]">
         <i class="fa-solid fa-chevron-left text-white"></i>
       </button>
       <p class="absolute left-[114px] top-[41px] text-[27px] font-bold text-center text-[#08b656]">
         Edit Profile
       </p>
-      <button
-        class="w-[347px] h-[170px] absolute left-[21px] top-[89px] rounded-[10px] bg-[#d9d9d9] text-[#8f8e8e]"
-      ><i class="fa-solid fa-arrow-up-from-bracket"></i><br>Upload Profile Picture</button>
+      <div class="flex items-center justify-center w-full">
+        <label for="inpt-profile-photo" class="w-[347px] h-[170px] absolute top-[89px] flex flex-col items-center justify-center border-2 border-gray-300 border-dashed rounded-lg cursor-pointer bg-gray-50 dark:hover:bg-gray-800 dark:bg-gray-700 hover:bg-gray-100 dark:border-gray-600 dark:hover:border-gray-500 dark:hover:bg-gray-600">
+            <div class="flex flex-col items-center justify-center pt-5 pb-6 text-[#8f8e8e]">
+                <i class="fa-solid fa-arrow-up-from-bracket"></i>
+                <p class="mb-2 text-sm text-gray-500 dark:text-gray-400"><span class="font-semibold">Upload Profile Photo</span></p>
+            </div>
+            <input id="inpt-profile-photo" type="file" accept="image/*" class="hidden" />
+        </label>
+      </div> 
 
       <p class="w-[264px] absolute left-[29px] top-[275px] text-base font-semibold text-left text-[#8f8e8e]">
         Name
       </p>
-      <input type="text" placeholder="Your name..."
+      <input id="inpt-profile-name" type="text" placeholder="Your name..."
         class="p-[6px] w-[347px] h-[42px] absolute left-[21px] top-[300px] rounded-[5px] bg-white border border-[#cecece] focus:bg-white focus:outline-none border-2 focus:border-green-500"
       >
       
       <p class="w-[264px] absolute left-[30px] top-[350px] text-base font-semibold text-left text-[#8f8e8e]">
         Bio
       </p>
-      <textarea placeholder="Tell us about yourself..." style="resize: none;" 
+      <textarea id="inpt-profile-bio" placeholder="Tell us about yourself..." style="resize: none;" 
         class="p-[6px] w-[347px] h-[63px] absolute left-[21px] top-[375px] rounded-[5px] bg-white border border-[#cecece] focus:bg-white focus:outline-none border-2 focus:border-green-500"
       ></textarea>
 
@@ -43,7 +49,7 @@
       <p class="w-[264px] absolute left-[29px] top-[470px] text-base font-semibold text-left text-[#8f8e8e]">
         Work Experience
       </p>
-      <input type="text" placeholder="Work Experience..."
+      <input id="inpt-profile-work-exp" type="text" placeholder="Work Experience..."
         class="p-[6px] w-[347px] h-[42px] absolute left-[21px] top-[495px] rounded-[5px] bg-white border border-[#cecece] focus:bg-white focus:outline-none border-2 focus:border-green-500"
       >
 

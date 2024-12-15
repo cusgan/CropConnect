@@ -20,7 +20,3 @@ class Posting extends HTMLElement {
 
 // Define the custom element
 customElements.define('posting-thumb', Posting);
-
-$(function () {
-
-});

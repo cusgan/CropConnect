@@ -8,6 +8,7 @@ namespace CropConnect.Services.Interfaces
         public void CreatePosting(PostingDTO postingDTO, IFormFile imageFile);
         public List<Posting> GetAllPostings();
         public List<Posting> GetPostingsById(int id);
+        public Posting GetPostingById(int id);
         public void UpdatePosting(int id, PostingDTO postingDTO);
         public bool DeletePosting(int id);
         public bool BuyProduct(int id, int quantity);
