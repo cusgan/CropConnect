@@ -11,9 +11,19 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <script src="../webcomponents/common.js"></script>
+    <style>
+      .hide-scrollbar {
+        -ms-overflow-style: none;  /* Internet Explorer 10+ */
+        scrollbar-width: none;  /* Firefox */
+      }
+      .container::-webkit-scrollbar { 
+        display: none;  /* Safari and Chrome */
+      }
+    </style>
+  </head>
 </head>
 <body class="m-4"> 
-    <div class="w-[390px] h-[844px] relative overflow-hidden bg-white">               
+    <div class="w-[390px] h-[777px] top-[0px] absolute overflow-scroll bg-white hide-scrollbar">               
       <button id="btnBack" class="w-10 h-10 absolute left-[28.5px] top-[29.5px] rounded-[50px] bg-[#08b656]">
         <i class="fa-solid fa-chevron-left text-white"></i>
       </button>
@@ -81,9 +91,14 @@
         <input type="text" placeholder="Additional Information..."
         class="p-[6px] w-[347px] h-[37px] absolute left-[21px] top-[775px] rounded-[5px] bg-[#ececec] focus:bg-white focus:outline-none border-2 focus:border-green-500">
 
+        <!-- whitespace -->
+        <div class="w-[264px] h-[100px] absolute left-[29px] top-[825px]"></div>
+
         <button
-        class="w-[241px] h-12 absolute left-[74.5px] top-[699.5px] rounded-[35px] bg-[#08b556] font-semibold text-center text-[#f7f7f7]"
+        class="w-[241px] sticky h-12 absolute left-[74.5px] top-[699.5px] rounded-[35px] bg-[#08b556] font-semibold text-center text-[#f7f7f7]"
         >Create</button>
+      </div>
+      <div class="p-6 w-[390px] h-[67px] absolute left-[10px] top-[0px]">
         <nav-bar></nav-bar>
       </div>
       

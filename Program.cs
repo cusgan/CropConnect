@@ -51,6 +51,10 @@ builder.Services.AddSwaggerGen();
 //    var connectionString = builder.Configuration.GetConnectionString("Default")!;
 //    return new MySqlConnector.MySqlConnection(connectionString);
 //});
+//builder.Services.AddControllers(options =>
+//{
+//    options.SuppressModelStateInvalidFilter = true; 
+//});
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.

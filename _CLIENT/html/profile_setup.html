@@ -7,10 +7,12 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap" rel="stylesheet">
     <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-    <script src="js/main.js"></script>
+    <script src="../js/main.js"></script>
+    <script src="../js/profilesetup.js"></script>
 </head>
 <body class="m-4"> 
   <div class="w-[390px] h-[844px] relative overflow-hidden bg-white">            
@@ -24,17 +26,17 @@
       class="w-[347px] h-[170px] absolute left-[21px] top-[89px] rounded-[10px] bg-[#d9d9d9] text-[#8f8e8e]"
     ><i class="fa-solid fa-arrow-up-from-bracket"></i><br>Upload Profile Picture</button>
 
-    <p class="w-[264px] absolute left-[29px] top-[275px] text-base font-semibold text-left text-[#8f8e8e]">
+    <p  class="w-[264px] absolute left-[29px] top-[275px] text-base font-semibold text-left text-[#8f8e8e]">
       Name
     </p>
-    <input type="text" placeholder="Your name..."
+    <input type="text" placeholder="Your name..." id="name"
       class="p-[6px] w-[347px] h-[42px] absolute left-[21px] top-[300px] rounded-[5px] bg-white border border-[#cecece] focus:bg-white focus:outline-none border-2 focus:border-green-500"
     >
     
     <p class="w-[264px] absolute left-[30px] top-[350px] text-base font-semibold text-left text-[#8f8e8e]">
       Bio
     </p>
-    <textarea placeholder="Tell us about yourself..." style="resize: none;" 
+    <textarea placeholder="Tell us about yourself..." style="resize: none;"  id="bio"
       class="p-[6px] w-[347px] h-[63px] absolute left-[21px] top-[375px] rounded-[5px] bg-white border border-[#cecece] focus:bg-white focus:outline-none border-2 focus:border-green-500"
     ></textarea>
 
@@ -43,7 +45,7 @@
     <p class="w-[264px] absolute left-[29px] top-[470px] text-base font-semibold text-left text-[#8f8e8e]">
       Work Experience
     </p>
-    <input type="text" placeholder="Work Experience..."
+    <input type="text" placeholder="Work Experience..."  id="work_experience"
       class="p-[6px] w-[347px] h-[42px] absolute left-[21px] top-[495px] rounded-[5px] bg-white border border-[#cecece] focus:bg-white focus:outline-none border-2 focus:border-green-500"
     >
 
@@ -61,7 +63,7 @@
         Add Work Experience
       </p> -->
       
-      <button
+      <button id="btnSave"
       class="w-[241px] h-12 absolute left-[74.5px] top-[699.5px] rounded-[35px] bg-[#08b556] font-semibold text-center text-[#f7f7f7]"
       >Save Profile</button>
       

@@ -56,8 +56,9 @@ namespace CropConnect.Repositories
 
         public List<Guide> QueryGuides(string query)
         {
+            string search = $"%{query}%";
             List<Guide> guides = _appDbContext.Guide
-                                 .FromSqlRaw($"SELECT * FROM Guide {query}")
+                                 .FromSqlInterpolated($"SELECT * FROM Guide WHERE Title like {search}")
                                  .ToList();
 
             foreach (Guide guide in guides)

@@ -21,13 +21,13 @@ const headers= {
     // Add other headers like 'Authorization' if necessary
 }
 $(function(){
-    var user = getUser(1);
+    var user = getUser(getCookie("userId"));
 });
 async function getUser(userId){
     try {
         const response = await axios({
             method: "GET",      // HTTP method (GET, POST, etc.)
-            url: domain + `/api/profile/${userId}`,      // API endpoint
+            url: domain + `/api/profile/${userId}/profile`,      // API endpoint
             data: {},        // Data for POST/PUT requests
             headers: {
                 'Content-Type': 'application/json',  // Adjust if needed

@@ -2,7 +2,7 @@ class Posting extends HTMLElement {
     constructor() {
         super();
         // Load the external HTML file containing the template
-        fetch('../webcomponents/common-navbar.html')
+        fetch('../webcomponents/posting.html')
             .then(response => response.text())
             .then(html => {
                 // Create a temporary DOM to parse the HTML
@@ -19,4 +19,8 @@ class Posting extends HTMLElement {
 }
 
 // Define the custom element
-customElements.define('posting', Posting);
+customElements.define('posting-thumb', Posting);
+
+$(function () {
+
+});
