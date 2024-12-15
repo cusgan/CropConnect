@@ -13,9 +13,19 @@
     <script src="../js/main.js"></script>
     <script src="../webcomponents/common.js"></script>
     <script src="../path/to/flowbite/dist/flowbite.min.js"></script> 
+    <link href="https://cdn.jsdelivr.net/npm/flowbite@2.5.2/dist/flowbite.min.css" rel="stylesheet" />
+    <style>
+      .hide-scrollbar {
+        -ms-overflow-style: none;  /* Internet Explorer 10+ */
+        scrollbar-width: none;  /* Firefox */
+      }
+      .container::-webkit-scrollbar { 
+        display: none;  /* Safari and Chrome */
+      }
+      </style>
 </head>
 <body>
-<div class="w-[410px] h-[736px] relative overflow-scroll bg-white">
+<div class="w-[410px] h-[736px] relative overflow-scroll hide-scrollbar">
     <p class="absolute left-[18px] top-[255px] text-[40px] text-left text-[#08b656]">Ba-cow naman</p>
     <p class="absolute left-[18px] top-[465px] text-[27px] text-left text-[#08b656]">
       Product Details
@@ -81,11 +91,11 @@
       class="w-[354px] h-7 absolute left-[17px] top-[598px] rounded-[5px] bg-white border border-[#cecece]"
     ></input>
     <div class="w-[241px] h-12">
-      <button
-        class="w-[241px] h-12 z-1 fixed left-[78px] top-[638px] rounded-[35px] bg-[#08b556] text-[#ffffff]"
+      <button data-modal-target="confirm-modal" data-modal-toggle="confirm-modal"
+        class="w-[241px] h-12 fixed left-[78px] top-[638px] rounded-[35px] bg-[#08b556] text-[#ffffff]"
       >Buy</button>
     </div>
-    <nav-bar class="z-1 fixed left-[0px] top-[-59px]"></nav-bar>
+    <nav-bar class="fixed left-[0px] top-[-59px]"></nav-bar>
     <div class="w-[460px] h-[249px] absolute left-0 top-0 overflow-hidden rounded-[5px]">
       <img
         src="../media/cow.jpg"
@@ -94,10 +104,35 @@
       <button id="btnBack" class="w-10 h-10 absolute left-[28.5px] top-[29.5px] rounded-[50px] bg-[#08b656]">
         <i class="fa-solid fa-chevron-left text-white"></i>
       </button>
-      <button class="w-10 h-10 absolute right-[28.5px] top-[29.5px] rounded-[50px] bg-[#08b656]">
-        <i class="fa-solid fa-chevron-left text-white"></i>
+      <button class="w-10 h-10 absolute left-[320px] top-[29.5px] rounded-[50px] bg-[#08b656]">
+        <i class="fa-regular fa-message" style="color: #ffffff;"></i>
       </button>
+      </div>
     </div>
-  </div>
+
+    <div id="confirm-modal" aria-hidden="true" class="hidden w-[390px] h-[229px] absolute z-50 left-[2px] top-[554px] overflow-hidden ">
+      <div class="w-[390px] h-[250px]">
+        <div
+          class="w-[390px] h-[250px] absolute left-[-0.5px] top-[-0.5px] rounded-[10px] bg-[#f7f7f7] border border-[#f7f7f7]"
+        ></div>
+        <input
+          class="w-[354px] h-7 absolute left-[13.5px] top-[60px] rounded-[5px] bg-white border border-[#cecece]"
+        ></input>
+        <p class="absolute left-[326px] top-[61px] text-[15px] text-left text-[#8f8e8e]">| kgs</p>
+        <p class="absolute left-[18px] top-[17px] text-xl text-left text-[#08b656]">Order Quantity</p>
+        <div class="w-[241px] h-12">
+          <button data-modal-target="confirm-modal" data-modal-hide="confirm-modal"
+            class="w-[241px] h-12 absolute left-[73.5px] top-[110px] rounded-[35px] bg-[#08b556] text-white"
+          >Confirm</button>
+        </div>
+        <div class="w-[241px] h-12">
+          <button data-modal-target="confirm-modal" data-modal-hide="confirm-modal"
+            class="w-[241px] h-12 absolute left-[73.5px] top-[170.5px] rounded-[35px] bg-[#8f8e8e] text-white"
+          >Cancel</button>
+        </div>
+      </div>
+    </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/flowbite@2.5.2/dist/flowbite.min.js"></script>
   </body>
 </html>
