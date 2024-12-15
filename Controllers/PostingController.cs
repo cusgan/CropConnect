@@ -74,9 +74,9 @@ namespace CropConnect.Controllers
         }
         [HttpPut]
         [Route("buy/{id}")]
-        public IActionResult BuyProduct(int id)
+        public IActionResult BuyProduct(int id, [FromForm] int quantity)
         {
-            var success = _postingService.BuyProduct(id);
+            var success = _postingService.BuyProduct(id, quantity);
             if (!success)
             {
                 return NotFound($"Product with ID {id} is out of stock.");

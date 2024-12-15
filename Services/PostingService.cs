@@ -73,7 +73,7 @@ namespace CropConnect.Services
             _postingRepository.DeletePosting(posting);
             return true;
         }
-        public bool BuyProduct(int id)
+        public bool BuyProduct(int id, int quantity)
         {
             var posting = _postingRepository.GetPostingById(id);
             if (posting == null)
@@ -81,13 +81,17 @@ namespace CropConnect.Services
                 throw new Exception($"Posting with ID {id} not found.");
             }
 
-            if (posting.Stock > 0)
+            if (posting.Stock == 0)
             {
-                posting.Stock = posting.Stock - 1;
+                return false;
+            }
+            if (posting.Stock - quantity >= 0)
+            {
+                posting.Stock = posting.Stock - quantity;
             }
             else
             {
-                return false;
+                throw new Exception($"Product stock is insufficient.");
             }
 
             _postingRepository.BuyProduct(posting);

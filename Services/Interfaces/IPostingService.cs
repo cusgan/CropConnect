@@ -10,7 +10,7 @@ namespace CropConnect.Services.Interfaces
         public List<Posting> GetPostingsById(int id);
         public void UpdatePosting(int id, PostingDTO postingDTO);
         public bool DeletePosting(int id);
-        public bool BuyProduct(int id);
+        public bool BuyProduct(int id, int quantity);
         public void SetProductImage(int id, IFormFile imageFile);
     }
 }
