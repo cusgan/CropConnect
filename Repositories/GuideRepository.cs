@@ -10,12 +10,13 @@ namespace CropConnect.Repositories
         private readonly AppDbContext _appDbContext;
         public GuideRepository(AppDbContext appDbContext){ _appDbContext = appDbContext; }
 
-        public bool CreateGuide(Guide guide)
+        public bool CreateGuide(Guide guide, byte[] imageData)
         {
             var author = _appDbContext.Account.SingleOrDefault(x => x.Id == guide.AuthorId);
             if (author == null)
                 return false;
             guide.Author = author;
+            guide.HeadingImage = imageData;
             _appDbContext.Guide.Add(guide);
             _appDbContext.SaveChanges();
             return true;
@@ -75,9 +76,17 @@ namespace CropConnect.Repositories
             old.Title = guide.Title;
             old.Content = guide.Content;
             old.LastUpdated = guide.LastUpdated;
-            old.HeadingImage = guide.HeadingImage;
             _appDbContext.SaveChanges();
             return true;
+        }
+        public void SetHeadingImage(int id, byte[] imageData)
+        {
+            var guide = _appDbContext.Guide.FirstOrDefault(g => g.Id == id);
+            if (guide != null)
+            {
+                guide.HeadingImage = imageData;
+                _appDbContext.SaveChanges();
+            }
         }
     }
 }

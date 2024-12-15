@@ -4,7 +4,6 @@
     {
         public int Id { get; set; }
         public int PosterId { get; set; }
-        public string ProductImage { get; set; } = string.Empty;
         public string ProductName { get; set; } = string.Empty;
         public string ProductDescription { get; set; } = string.Empty;
         public string ProductType { get; set; } = string.Empty;

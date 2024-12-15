@@ -8,9 +8,10 @@ namespace CropConnect.Repositories
         private readonly AppDbContext _appDbContext;
         public PostingRepository(AppDbContext appDbContext) { _appDbContext = appDbContext; }
 
-        public void CreatePosting(Posting posting)
+        public void CreatePosting(Posting posting, byte[] imageData)
         {
             _appDbContext.Posting.Add(posting);
+            posting.ProductImage = imageData;
             _appDbContext.SaveChanges();
         }
         public List<Posting> GetAllPostings()
@@ -42,6 +43,15 @@ namespace CropConnect.Repositories
         {
             _appDbContext.Posting.Update(posting);
             _appDbContext.SaveChanges();
+        }
+        public void SetProductImage(int id, byte[] imageData)
+        {
+            var posting = _appDbContext.Posting.FirstOrDefault(p => p.Id == id);
+            if (posting != null)
+            {
+                posting.ProductImage = imageData;
+                _appDbContext.SaveChanges();
+            }
         }
     }
 }

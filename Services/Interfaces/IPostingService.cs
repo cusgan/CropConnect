@@ -5,11 +5,12 @@ namespace CropConnect.Services.Interfaces
 {
     public interface IPostingService
     {
-        public void CreatePosting(PostingDTO postingDTO);
+        public void CreatePosting(PostingDTO postingDTO, IFormFile imageFile);
         public List<Posting> GetAllPostings();
         public List<Posting> GetPostingsById(int id);
         public void UpdatePosting(int id, PostingDTO postingDTO);
         public bool DeletePosting(int id);
-        public bool BuyProduct(int id);
+        public bool BuyProduct(int id, int quantity);
+        public void SetProductImage(int id, IFormFile imageFile);
     }
 }

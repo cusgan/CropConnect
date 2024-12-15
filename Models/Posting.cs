@@ -10,8 +10,7 @@ namespace CropConnect.Models
         public int PosterId { get; set; }
         [Required]
         public Account? Poster { get; set; }
-        [StringLength(100)]
-        public string ProductImage { get; set; } = string.Empty;
+        public byte[]? ProductImage { get; set; }
         [Required]
         [StringLength(50)]
         public string ProductName { get; set; } = string.Empty;
