@@ -19,7 +19,6 @@ namespace CropConnect.Models
         public DateTime DatePosted { get; set; }
         [Required]
         public DateTime LastUpdated { get; set; }
-        [StringLength(100)]
-        public string HeadingImage { get; set; } = string.Empty;
+        public byte[]? HeadingImage { get; set; }
     }
 }

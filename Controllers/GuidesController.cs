@@ -1,4 +1,5 @@
 ﻿using CropConnect.DTO;
+using CropConnect.Services;
 using CropConnect.Services.Interfaces;
 using Microsoft.AspNetCore.Mvc;
 
@@ -28,16 +29,16 @@ namespace CropConnect.Controllers
         }
         [HttpPost]
         [Route("api/guides/post")]
-        public IActionResult CreateGuide([FromForm] int authorId, [FromForm] string title, [FromForm] string content, [FromForm] string heading)
+        public IActionResult CreateGuide([FromForm] int authorId, [FromForm] string title, [FromForm] string content, IFormFile HeadingImage)
         {
-            bool success = _guideService.CreateGuide(authorId,title,content,heading);
+            bool success = _guideService.CreateGuide(authorId,title,content,HeadingImage);
             return Ok ($"Successfully created new Guide, success = {success}");
         }
         [HttpPut]
         [Route("api/guides/update")]
-        public IActionResult UpdateGuide([FromForm] int guideId, [FromForm] string title, [FromForm] string content, [FromForm] string heading)
+        public IActionResult UpdateGuide([FromForm] int guideId, [FromForm] string title, [FromForm] string content)
         {
-            bool success = _guideService.UpdateGuide(guideId, title, content, heading);
+            bool success = _guideService.UpdateGuide(guideId, title, content);
             return Ok ($"Successfully updated Guide, success = {success}");
         }
         [HttpDelete]
@@ -54,8 +55,18 @@ namespace CropConnect.Controllers
             _guideService.QueryGuides(query);
             return Ok(_guideService.QueryGuides(query));
         }
+        [HttpPost]
+        [Route("{id}/upload-image")]
+        public IActionResult SetHeadingImage(int id, IFormFile imageFile)
+        {
+            if (imageFile == null || imageFile.Length == 0)
+            {
+                return BadRequest(new { Message = "Invalid image file." });
+            }
 
+            _guideService.SetHeadingImage(id, imageFile);
 
-
+            return Ok(new { Message = "Image uploaded successfully." });
+        }
     }
 }

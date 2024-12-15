@@ -1,5 +1,6 @@
 ﻿using CropConnect.DTO;
 using CropConnect.Models;
+using CropConnect.Repositories;
 using CropConnect.Repositories.Interfaces;
 using CropConnect.Services.Interfaces;
 
@@ -9,7 +10,7 @@ namespace CropConnect.Services
     {
         private readonly IPostingRepository _postingRepository;
         public PostingService(IPostingRepository postingRepository) { _postingRepository = postingRepository; }
-        public void CreatePosting(PostingDTO postingDTO)
+        public void CreatePosting(PostingDTO postingDTO, IFormFile imageFile)
         {
             Enum.TryParse(postingDTO.ProductType, true, out ProductType productType);
             Enum.TryParse(postingDTO.UnitType, true, out UnitType unitType);
@@ -17,7 +18,6 @@ namespace CropConnect.Services
             {
                 Id = postingDTO.Id,
                 PosterId = postingDTO.PosterId,
-                ProductImage = postingDTO.ProductImage,
                 ProductName = postingDTO.ProductName,
                 ProductDescription = postingDTO.ProductDescription,
                 ProductType = productType,
@@ -26,8 +26,17 @@ namespace CropConnect.Services
                 Stock = postingDTO.Stock,
                 AdditionalInfo = postingDTO.AdditionalInfo,
             };
+            byte[]? imageData = null;
+            if (imageFile != null && imageFile.Length > 0)
+            {
+                using (var memoryStream = new MemoryStream())
+                {
+                    imageFile.CopyTo(memoryStream);
+                    imageData = memoryStream.ToArray();
+                }
+            }
 
-            _postingRepository.CreatePosting(newPosting);
+            _postingRepository.CreatePosting(newPosting, imageData);
         }
         public List<Posting> GetAllPostings()
         {
@@ -46,7 +55,6 @@ namespace CropConnect.Services
             }
             Enum.TryParse(postingDTO.ProductType, true, out ProductType productType);
             Enum.TryParse(postingDTO.UnitType, true, out UnitType unitType);
-            posting.ProductImage = postingDTO.ProductImage;
             posting.ProductName = postingDTO.ProductName;
             posting.ProductType = productType;
             posting.UnitType = unitType;
@@ -84,6 +92,18 @@ namespace CropConnect.Services
 
             _postingRepository.BuyProduct(posting);
             return true;
+        }
+        public void SetProductImage(int id, IFormFile imageFile)
+        {
+            if (imageFile != null && imageFile.Length > 0)
+            {
+                using (var memoryStream = new MemoryStream())
+                {
+                    imageFile.CopyTo(memoryStream);
+                    var imageData = memoryStream.ToArray();
+                    _postingRepository.SetProductImage(id, imageData);
+                }
+            }
         }
     }
 }

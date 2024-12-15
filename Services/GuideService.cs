@@ -1,5 +1,6 @@
 ﻿using CropConnect.DTO;
 using CropConnect.Models;
+using CropConnect.Repositories;
 using CropConnect.Repositories.Interfaces;
 using CropConnect.Services.Interfaces;
 
@@ -35,7 +36,7 @@ namespace CropConnect.Services
             var guide = _guideRepository.GetGuideById(id);
             return ToDTO(guide);
         }
-        public bool CreateGuide(int authorid, string title, string content, string heading)
+        public bool CreateGuide(int authorid, string title, string content, IFormFile imageFile)
         {
             DateTime now = DateTime.Now;
             Guide guide = new Guide()
@@ -43,14 +44,22 @@ namespace CropConnect.Services
                 AuthorId = authorid,
                 Title = title,
                 Content = content,
-                HeadingImage = heading,
                 DatePosted = now,
-                LastUpdated = now
+                LastUpdated = now,
             };
+            byte[]? imageData = null;
+            if (imageFile != null && imageFile.Length > 0)
+            {
+                using (var memoryStream = new MemoryStream())
+                {
+                    imageFile.CopyTo(memoryStream);
+                    imageData = memoryStream.ToArray();
+                }
+            }
 
-            return _guideRepository.CreateGuide(guide);
+            return _guideRepository.CreateGuide(guide, imageData);
         }
-        public bool UpdateGuide(int guideId, string title, string content, string heading)
+        public bool UpdateGuide(int guideId, string title, string content)
         {
             Guide? guide = _guideRepository.GetGuideById(guideId);
             if (guide == null)
@@ -58,7 +67,6 @@ namespace CropConnect.Services
 
             guide.Title = title;
             guide.Content = content;
-            guide.HeadingImage = heading;
             guide.LastUpdated = DateTime.Now;
             return _guideRepository.UpdateGuide(guide);
         }
@@ -117,6 +125,18 @@ namespace CropConnect.Services
                 };
             }
             return raw;
+        }
+        public void SetHeadingImage(int id, IFormFile imageFile)
+        {
+            if (imageFile != null && imageFile.Length > 0)
+            {
+                using (var memoryStream = new MemoryStream())
+                {
+                    imageFile.CopyTo(memoryStream);
+                    var imageData = memoryStream.ToArray();
+                    _guideRepository.SetHeadingImage(id, imageData);
+                }
+            }
         }
     }
 }
