@@ -9,13 +9,15 @@ namespace CropConnect.Services
     {
         private readonly IAccountRepository _accountRepository;
         public AccountService(IAccountRepository accountRepository) { _accountRepository = accountRepository; }
-        public bool Login(string email, string password)
+        public int Login(string email, string password)
         {
             var acc = _accountRepository.GetAccountByEmail(email);
-            if (acc == null) return false;
+            if (acc == null) return -1;
 
             string storedHash = acc.PasswordHash;
-            return (Equals(HashPassword(password), storedHash));
+            if (Equals(HashPassword(password), storedHash))
+                return acc.Id;
+            return -1;
         }
 
         public int Register(string email, string password)
@@ -34,7 +36,7 @@ namespace CropConnect.Services
         }
         public void DeleteAccount(string email, string password)
         {
-            if (Login(email, password))
+            if (Login(email, password)!=-1)
             {
                 int accountId = _accountRepository.GetAccountByEmail(email)!.Id;
                 _accountRepository.DeleteAccountById(accountId);

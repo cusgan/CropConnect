@@ -22,14 +22,14 @@ namespace CropConnect.Controllers
             {
                 return BadRequest("Both inputs are required.");
             }
-            bool success = _accountService.Login(email, password);
-            if (!success)
+            int userId = _accountService.Login(email, password);
+            if (userId == -1)
                 return NotFound($"Invalid Email or Password");
-            return Ok("Successfully Logged In");
+            return Ok(new { Message = "Successfully Logged In", userId = userId });
         }
         [HttpPost]
         [Route("api/accounts/register")]
-        public IActionResult Register([FromForm] string email, [FromForm] string password)
+        public IActionResult Register([FromForm] string email, [FromForm] string password, [FromForm] string name, [FromForm] string birthdate)
         {
             if (string.IsNullOrEmpty(email) || string.IsNullOrEmpty(password))
             {
@@ -38,7 +38,7 @@ namespace CropConnect.Controllers
             var acc = _accountService.Register(email, password);
             if (acc == -1)
                 return NotFound($"Account with that Email already exists");
-            _profileService.CreateProfile(acc);
+            _profileService.CreateProfile(acc,name,birthdate);
             return Ok("Successfully Registered");
         }
         [HttpPut]

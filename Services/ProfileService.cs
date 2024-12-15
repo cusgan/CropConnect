@@ -22,6 +22,19 @@ namespace CropConnect.Services
             };
             _profileRepository.CreateProfile(newProfile);
         }
+        public void CreateProfile(int id, string name, string birthdate)
+        {
+            DateTime birthdateDT = DateTime.ParseExact(birthdate, "MM/dd/yyyy", null);
+            Profile newProfile = new Profile
+            {
+                AccountId = id,
+                Name = name,
+                Bio = "",
+                WorkExperience = "",
+                BirthDate = birthdateDT,
+            };
+            _profileRepository.CreateProfile(newProfile);
+        }
         public void UpdateProfile(int id, ProfileDTO profileDTO)
         {
             var profile = _profileRepository.GetProfileById(id);
