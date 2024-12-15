@@ -1,22 +1,37 @@
-<div class="w-[390px] h-[844px] relative overflow-hidden bg-white">
-    <div
-      class="w-[315px] h-[41px] absolute left-[15px] top-[718px] rounded-[50px] bg-[#ececec]"
-    ></div>
-    <p class="absolute left-[33px] top-[733px] text-[15px] text-left text-[#8f8e8e]">
-      Type a message...
-    </p>
-    <p class="w-80 absolute left-[35px] top-[664px] text-base text-center text-[#8f8e8e]">
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap" rel="stylesheet">
+    <title>Edit Profile | CropConnect</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <script src="js/main.js"></script>
+</head>
+<body class="m-4"> 
+  <div class="w-[390px] h-[844px] relative overflow-hidden bg-white">
+    <input placeholder="Type a message..."
+      class="w-[315px] h-[41px] absolute left-[20px] top-[700px] rounded-[50px] bg-[#ececec]"
+    > 
+    <button class="w-10 h-10 absolute left-[28.5px] top-[700px] rounded-[50px]">
+      <i class="fa-regular fa-paper-plane" style="color: #757575;"></i>
+    </button>
+    <p class="w-80 absolute left-[35px] top-[640px] text-base text-center text-[#8f8e8e]">
       You are now chatting with Farmer Delgado.
     </p>
     <div class="w-[390px] h-[102px] absolute left-[-1px] top-[-1px] bg-[#ececec]"></div>
-    <p class="absolute left-[149px] top-[51px] text-[27px] text-left text-[#08b656]">
+    <p class="absolute left-[145px] top-[35px] text-[27px] text-left text-[#08b656]">
       Farmer Delgado
     </p>
-    <img class="absolute left-[72.25px] top-[30.25px]" src="ellipse-5.png" />
+    <img class="absolute left-[85px] top-[30.25px] w-[50px] h-[50px]" src="../media/prof-pic-default.png" />
     <div class="w-10 h-10">
-      <div class="w-10 h-10 absolute left-[24.5px] top-[24.5px] rounded-[50px] bg-[#08b656]"></div>
-      <div class="w-5 h-1 absolute left-[47.64px] top-[30.5px] rounded-[11px] bg-white"></div>
-      <div class="w-5 h-1 absolute left-[50.47px] top-[56.64px] rounded-[11px] bg-white"></div>
+      <button class="w-10 h-10 absolute left-[28.5px] top-[29.5px] rounded-[50px] bg-[#08b656]">
+        <i class="fa-solid fa-chevron-left text-white"></i>
+      </button>
     </div>
     <svg
       width="390"
@@ -46,3 +61,5 @@
       ></path>
     </svg>
   </div>
+</body>
+</html>
